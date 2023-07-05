@@ -17,7 +17,7 @@ function Popular() {
       .then((response) => response.json())
       .then((data) => setPopularShows(data.results))
       .catch((error) => console.log(error));
-  }, []);
+  }, [api_key]);
 
   const baseUrl = "https://image.tmdb.org/t/p/w500";
 

@@ -38,14 +38,14 @@ export default function Moviedetails() {
       .then((response) => response.json())
       .then((data) => setDetails(data))
       .catch((error) => console.log(error));
-  }, [id]);
+  }, [id, api_key]);
 
   useEffect(() => {
     fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${api_key}`)
       .then((response) => response.json())
       .then((data) => setCast(data.cast))
       .catch((error) => console.log(error));
-  }, [id]);
+  }, [id, api_key]);
 
   useEffect(() => {
     fetch(
@@ -54,14 +54,14 @@ export default function Moviedetails() {
       .then((response) => response.json())
       .then((data) => setReco(data.results))
       .catch((error) => console.log(error));
-  }, [id]);
+  }, [id, api_key]);
 
   useEffect(() => {
     fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${api_key}`)
       .then((response) => response.json())
       .then((data) => setVideo(data.results))
       .catch((error) => console.log(error));
-  }, [id]);
+  }, [id, api_key]);
 
   if (!details) {
     return <div>Movie not found</div>;

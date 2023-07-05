@@ -15,7 +15,7 @@ export default function PopularMovies() {
       .then((response) => response.json())
       .then((data) => setMovies(data.results))
       .catch((error) => console.log(error));
-  }, []);
+  }, [api_key]);
 
   const baseUrl = "https://image.tmdb.org/t/p/w500";
 

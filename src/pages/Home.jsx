@@ -15,21 +15,21 @@ export default function Home() {
       .then((response) => response.json())
       .then((data) => setGenres(data.genres))
       .catch((error) => console.log(error));
-  }, []);
+  }, [api_key]);
 
   useEffect(() => {
     fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${api_key}`)
       .then((response) => response.json())
       .then((data) => setUpcoming(data.results))
       .catch((error) => console.log(error));
-  }, []);
+  }, [api_key]);
 
   useEffect(() => {
     fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${api_key}`)
       .then((response) => response.json())
       .then((data) => setMovies(data.results))
       .catch((error) => console.log(error));
-  }, []);
+  }, [api_key]);
 
   const baseUrl = "https://image.tmdb.org/t/p/w500";
 
