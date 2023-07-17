@@ -15,10 +15,25 @@ import TvAiringToday from "./pages/Tv/AiringToday";
 import Lists from "./pages/Lists";
 import People from "./pages/People";
 import Peopledetails from "./components/Peopledetails";
+import Loader from "./components/Loader";
+import { useState } from "react";
+import { useEffect } from "react";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(()=>{
+    const timer = setTimeout(()=>{
+      setIsLoading(false);
+    }, 6000);
+    
+    return() => clearTimeout(timer);
+  },[])
   return (
     <Router>
+      {isLoading ? (
+        <Loader />
+      ):(
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
@@ -37,6 +52,7 @@ function App() {
         <Route path="/people" element={<People />} />
         <Route path="/people/:id" element={<Peopledetails />}/>
       </Routes>
+      )}
     </Router>
   );
 }
