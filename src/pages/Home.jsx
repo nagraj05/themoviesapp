@@ -37,7 +37,7 @@ export default function Home() {
     <div>
       <Navbar />
       <div className="flex">
-        <div className="w-1/5 bg-gray-200 p-4">
+        {/* <div className="w-1/5 bg-gray-200 p-4">
           <h2 className="font-bold text-lg mb-4">Genres</h2>
           <ul>
             {genres.map((genre) => (
@@ -46,8 +46,8 @@ export default function Home() {
               </li>
             ))}
           </ul>
-        </div>
-        <div className="flex flex-col  w-4/5 ">
+        </div> */}
+        <div className="flex flex-col overflow-hidden   ">
           <div className="p-6">
             <h3 className="text-white text-4xl mx-7 my-5">Upcoming</h3>
             <div className="flex overflow-x-scroll  scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">

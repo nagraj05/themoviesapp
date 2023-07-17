@@ -32,6 +32,9 @@ export default function Moviedetails() {
   const handleRecommendationClick = () => {
     window.location.hash = "#top";
   };
+  const handlePeople = () => {
+    window.scrollTo({ top: 0 });
+  };
 
   useEffect(() => {
     fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}`)
@@ -152,6 +155,7 @@ export default function Moviedetails() {
                 <Link
                   to={`/people/${person.id}`}
                   key={person.id}
+                  onClick={handlePeople}
                   className="flex flex-col items-center mx-2 my-5 bg-nav rounded-lg w-52"
                 >
                   <img

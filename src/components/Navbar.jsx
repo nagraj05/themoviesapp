@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
-import logo from '../assets/title.png'
+import logo from "../assets/title.png";
 
 export default function Navbar() {
   const [showTvList, setShowTvList] = useState(false);
@@ -19,10 +19,16 @@ export default function Navbar() {
   };
 
   const handleClickOutside = (event) => {
-    if (movieDropdownRef.current && !movieDropdownRef.current.contains(event.target)) {
+    if (
+      movieDropdownRef.current &&
+      !movieDropdownRef.current.contains(event.target)
+    ) {
       setShowMovieList(false);
     }
-    if (tvDropdownRef.current && !tvDropdownRef.current.contains(event.target)) {
+    if (
+      tvDropdownRef.current &&
+      !tvDropdownRef.current.contains(event.target)
+    ) {
       setShowTvList(false);
     }
   };
@@ -36,15 +42,18 @@ export default function Navbar() {
 
   return (
     <div className="flex justify-between items-center bg-nav py-5 font-rob font-semibold">
-     <div className="bg-blend-screen">
-  <img src={logo} alt="Logo" className="h-12 mx-20"/>
-</div>
-      <div className="">
-        <ul className="flex justify-between space-x-9 mx-4 px-20 text-white font-rob font-semibold cursor-pointer ">
+      <div>
+        <img src={logo} alt="Logo" className="h-12 mx-20" />
+      </div>
+      <div>
+        <ul className="flex justify-between space-x-9 mx-4 px-20 text-white font-rob font-semibold cursor-pointer items-center">
           <li className="hover:text-red-700">
             <Link to="/">HOME</Link>
           </li>
-          <li className="hover:text-red-700 relative" onClick={handleMovieClick}>
+          <li
+            className="hover:text-red-700 relative"
+            onClick={handleMovieClick}
+          >
             <span>MOVIES</span>
             {showMovieList && (
               <ul
