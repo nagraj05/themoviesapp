@@ -11,7 +11,7 @@ export default function TvDetails() {
   const [video, setVideo] = useState([]);
   const [reco, setReco] = useState([]);
 
-  const api_key = import.meta.env.VITE_TMDB_API_KEY;  
+  const api_key = import.meta.env.VITE_TMDB_API_KEY;
   const baseUrl = "https://image.tmdb.org/t/p/w500";
 
   const { id } = useParams();
@@ -43,8 +43,7 @@ export default function TvDetails() {
 
   useEffect(() => {
     fetch(
-      `
-      https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=${api_key}`
+      `https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=${api_key}`
     )
       .then((response) => response.json())
       .then((data) => setReco(data.results))
@@ -81,12 +80,13 @@ export default function TvDetails() {
                 {details.tagline}
               </p>
             )}
-            <p className="text-white bg-nav p-3 font-nunito rounded-xl my-1">
-              Genre:
-              {details.genres &&
-                details.genres.map((genre) => genre.name).join(", ")}
-            </p>
-            <p className="text-white rounded-xl font-nunito font-normal p-4 bg-nav my-2 ">
+            {details.genres && details.genres.length > 0 && (
+              <p className="text-white bg-nav p-3 font-nunito rounded-xl my-1">
+                Genre:{" "}
+                {details.genres.map((genre) => genre.name).join(", ")}
+              </p>
+            )}
+            <p className="text-white rounded-xl font-nunito font-normal p-4 bg-nav my-2">
               {details.overview}
             </p>
           </div>
@@ -99,7 +99,8 @@ export default function TvDetails() {
           {cast.map((person) => {
             if (person.profile_path) {
               return (
-                <div
+                <Link
+                  to={`/people/${person.id}`}
                   key={person.id}
                   className="flex flex-col items-center mx-2 my-5 bg-nav rounded-lg w-52"
                 >
@@ -114,7 +115,7 @@ export default function TvDetails() {
                   <p className="text-gray-400 font-ptsans py-1">
                     {person.character}
                   </p>
-                </div>
+                </Link>
               );
             }
             return null;
@@ -145,7 +146,9 @@ export default function TvDetails() {
                     <h4 className="text-white font-ptsans text-lg m-2">
                       {movie.name}
                     </h4>
-                    <p className="text-white font-ptsans m-2">{movie.type}</p>
+                    <p className="text-white font-ptsans m-2">
+                      {movie.type}
+                    </p>
                   </div>
                 </div>
               );

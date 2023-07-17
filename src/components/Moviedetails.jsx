@@ -142,14 +142,15 @@ export default function Moviedetails() {
           </div>
         </div>
       </div>
-      {/*CAST */}
+      {/* CAST */}
       <div>
         <h3 className="text-white text-4xl mx-7 my-5">Cast</h3>
         <div className="flex overflow-x-auto m-5 scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
           {cast.map((person) => {
             if (person.profile_path) {
               return (
-                <div
+                <Link
+                  to={`/people/${person.id}`}
                   key={person.id}
                   className="flex flex-col items-center mx-2 my-5 bg-nav rounded-lg w-52"
                 >
@@ -161,79 +162,83 @@ export default function Moviedetails() {
                   <p className="text-white text-lg font-ptsans">
                     {person.name}
                   </p>
-                  <p className="text-gray-400 font-ptsans py-1">
+                  <p className="text-gray-400 p-4 font-ptsans py-1">
                     {person.character}
                   </p>
-                </div>
+                </Link>
               );
             }
             return null;
           })}
         </div>
       </div>
-      {/*Trailers*/}
-      <div>
-        <h3 className="text-white text-4xl mx-7 my-5">
-          Trailers & Behind the Scenes
-        </h3>
-        <div className="flex overflow-x-auto m-5 scrollbar-w-2 scrollbar-track-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray ">
-          {video.map((movie) => {
-            if (movie.type === "Trailer") {
-              return (
-                <div key={movie.id} className="flex-none mx-3 my-3">
-                  <div className="flex flex-nowrap">
-                    <iframe
-                      title={movie.name}
-                      height="250"
-                      width="350"
-                      src={`https://www.youtube.com/embed/${movie.key}`}
-                      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    ></iframe>
+      {/* Trailers */}
+      {video.length > 0 && (
+        <div>
+          <h3 className="text-white text-4xl mx-7 my-5">
+            Trailers & Behind the Scenes
+          </h3>
+          <div className="flex overflow-x-auto m-5 scrollbar-w-2 scrollbar-track-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray ">
+            {video.map((movie) => {
+              if (movie.type === "Trailer") {
+                return (
+                  <div key={movie.id} className="flex-none mx-3 my-3">
+                    <div className="flex flex-nowrap">
+                      <iframe
+                        title={movie.name}
+                        height="250"
+                        width="350"
+                        src={`https://www.youtube.com/embed/${movie.key}`}
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      ></iframe>
+                    </div>
+                    <div>
+                      <h4 className="text-white font-ptsans text-lg m-2">
+                        {movie.name}
+                      </h4>
+                      <p className="text-white font-ptsans m-2">{movie.type}</p>
+                    </div>
                   </div>
+                );
+              }
+              return null;
+            })}
+          </div>
+        </div>
+      )}
+      {/* Recommendations */}
+      {reco.length > 0 && (
+        <div>
+          <h3 className="text-white text-4xl mx-7 my-5">Recommendations</h3>
+          <div className="flex">
+            {reco.slice(0, 3).map((movie) => (
+              <Link
+                key={movie.id}
+                to={`/movie/${movie.id}`}
+                className="cursor-pointer"
+                onClick={handleRecommendationClick}
+              >
+                <div className="w-60 border border-gray-500 mx-7 my-3 ">
+                  <img
+                    src={baseUrl + movie.poster_path}
+                    alt=""
+                    className="h-64 w-60"
+                  />
                   <div>
-                    <h4 className="text-white font-ptsans text-lg m-2">
-                      {movie.name}
+                    <h4 className="text-white font-ptsans text-lg  m-2">
+                      {movie.original_title}
                     </h4>
-                    <p className="text-white font-ptsans m-2">{movie.type}</p>
+                    <p className="text-white font-ptsans  m-2">
+                      IMDb: {movie.vote_average && movie.vote_average.toFixed(1)}
+                    </p>
                   </div>
                 </div>
-              );
-            }
-            return null;
-          })}
+              </Link>
+            ))}
+          </div>
         </div>
-      </div>
-      {/*Recommendations*/}
-      <div>
-        <h3 className="text-white text-4xl mx-7 my-5">Recommendations</h3>
-        <div className="flex">
-          {reco.slice(0, 3).map((movie) => (
-            <Link
-              key={movie.id}
-              to={`/movie/${movie.id}`}
-              className="cursor-pointer"
-              onClick={handleRecommendationClick}
-            >
-              <div className="w-60 border border-gray-500 mx-7 my-3 ">
-                <img
-                  src={baseUrl + movie.poster_path}
-                  alt=""
-                  className="h-64 w-60"
-                />
-                <div>
-                  <h4 className="text-white font-ptsans text-lg  m-2">
-                    {movie.original_title}
-                  </h4>
-                  <p className="text-white font-ptsans  m-2">
-                    IMDb: {movie.vote_average && movie.vote_average.toFixed(1)}
-                  </p>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
+      )}
       <ButtonToTop />
       <Footer />
     </div>

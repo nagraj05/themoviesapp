@@ -1,21 +1,44 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import logo from '../assets/title.png'
 
 export default function Navbar() {
   const [showTvList, setShowTvList] = useState(false);
-  const [showMovieList, setShowMovieList] = useState(false)
+  const [showMovieList, setShowMovieList] = useState(false);
+  const movieDropdownRef = useRef(null);
+  const tvDropdownRef = useRef(null);
 
   const handleTvClick = () => {
     setShowTvList(!showTvList);
+    setShowMovieList(false); // Close movie dropdown
   };
 
-  const handleMovieClick = () =>{
+  const handleMovieClick = () => {
     setShowMovieList(!showMovieList);
+    setShowTvList(false); // Close TV Shows dropdown
   };
+
+  const handleClickOutside = (event) => {
+    if (movieDropdownRef.current && !movieDropdownRef.current.contains(event.target)) {
+      setShowMovieList(false);
+    }
+    if (tvDropdownRef.current && !tvDropdownRef.current.contains(event.target)) {
+      setShowTvList(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="flex justify-between items-center bg-nav py-5 font-rob font-semibold">
-      <h1 className="px-20 text-lg text-white">The Movies App</h1>
+     <div className="bg-blend-screen">
+  <img src={logo} alt="Logo" className="h-12 mx-20"/>
+</div>
       <div className="">
         <ul className="flex justify-between space-x-9 mx-4 px-20 text-white font-rob font-semibold cursor-pointer ">
           <li className="hover:text-red-700">
@@ -24,7 +47,10 @@ export default function Navbar() {
           <li className="hover:text-red-700 relative" onClick={handleMovieClick}>
             <span>MOVIES</span>
             {showMovieList && (
-              <ul className="absolute bg-white text-black rounded-md p-2 space-y-2 mt-1 z-50">
+              <ul
+                ref={movieDropdownRef}
+                className="absolute bg-white text-black rounded-md p-2 space-y-2 mt-1 z-50"
+              >
                 <li className="hover:text-red-700 border-b border-gray-300 ">
                   <Link to="/movie/now-playing">Now Playing</Link>
                 </li>
@@ -43,7 +69,10 @@ export default function Navbar() {
           <li className="hover:text-red-700 relative" onClick={handleTvClick}>
             <span>TV SHOWS</span>
             {showTvList && (
-              <ul className="absolute bg-white text-black rounded-md p-2 space-y-2 mt-1 z-50">
+              <ul
+                ref={tvDropdownRef}
+                className="absolute bg-white text-black rounded-md p-2 space-y-2 mt-1 z-50"
+              >
                 <li className="hover:text-red-700 border-b border-gray-300 ">
                   <Link to="/tv/popular">Popular</Link>
                 </li>

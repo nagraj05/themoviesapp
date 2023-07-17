@@ -14,6 +14,7 @@ import TvOnTheAir from "./pages/Tv/OnTheAir";
 import TvAiringToday from "./pages/Tv/AiringToday";
 import Lists from "./pages/Lists";
 import People from "./pages/People";
+import Peopledetails from "./components/Peopledetails";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/tv/on-the-air" element={<TvOnTheAir />} />
         <Route path="/lists" element={<Lists />} />
         <Route path="/people" element={<People />} />
+        <Route path="/people/:id" element={<Peopledetails />}/>
       </Routes>
     </Router>
   );
