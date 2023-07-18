@@ -1,14 +1,13 @@
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import GitHubIcon from "@mui/icons-material/GitHub";
+import YouTubeIcon from '@mui/icons-material/YouTube';
 
 export default function Footer() {
   return (
     <div className="bg-nav flex flex-col justify-center items-center p-10">
       <div className="flex p-5 space-x-5">
         <a
-          href="https://www.instagram.com"
+          href="https://www.instagram.com/thatguywithabook"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -22,18 +21,11 @@ export default function Footer() {
           <TwitterIcon className="hover:text-red-600" />
         </a>
         <a
-          href="https://www.linkedin.com"
+          href="https://www.youtube.com"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <LinkedInIcon className="hover:text-red-600" />
-        </a>
-        <a
-          href="https://www.github.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <GitHubIcon className="hover:text-red-600" />
+          <YouTubeIcon className="hover:text-red-600" />
         </a>
       </div>
       <div className="text-white">

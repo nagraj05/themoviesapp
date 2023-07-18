@@ -10,6 +10,10 @@ export default function People() {
 
   const api_key = import.meta.env.VITE_TMDB_API_KEY;
 
+  const handleMoviesClick = () => {
+    window.scrollTo({ top: 0 });
+  };
+
   function subtract() {
     if (count > 1) {
       setCount((prevState) => prevState - 1);
@@ -49,7 +53,7 @@ export default function People() {
       </div>
       <div className="flex flex-wrap justify-center items-center">
         {people.map((person) => (
-          <Link key={person.id} to={`/people/${person.id}`}>
+          <Link key={person.id} to={`/people/${person.id}`} onClick={handleMoviesClick}>
             <div className="w-60 border border-gray-500 mx-5 my-3 ">
               <img
                 src={baseUrl + person.profile_path}

@@ -1,21 +1,25 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import logo from "../assets/title.png";
+import { useRef } from "react";
+import { useEffect } from "react";
 
 export default function Navbar() {
-  const [showTvList, setShowTvList] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showMovieList, setShowMovieList] = useState(false);
+  const [showTvlist, setShowTvList] = useState(false);
+
   const movieDropdownRef = useRef(null);
   const tvDropdownRef = useRef(null);
 
   const handleTvClick = () => {
-    setShowTvList(!showTvList);
-    setShowMovieList(false); // Close movie dropdown
+    setShowTvList(!showTvlist);
+    setShowMovieList(false);
   };
 
   const handleMovieClick = () => {
     setShowMovieList(!showMovieList);
-    setShowTvList(false); // Close TV Shows dropdown
+    setShowTvList(false);
   };
 
   const handleClickOutside = (event) => {
@@ -32,20 +36,89 @@ export default function Navbar() {
       setShowTvList(false);
     }
   };
-
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  });
+  const handleMenuClick = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <div className="flex justify-between items-center bg-nav py-5 font-rob font-semibold">
       <div>
         <img src={logo} alt="Logo" className="h-12 mx-20" />
       </div>
-      <div>
+      <div className="relative">
+        <button
+          className="block lg:hidden text-white hover:text-red-700 focus:outline-none mx-16"
+          onClick={handleMenuClick}
+        >
+          <svg
+            className="h-6 w-6 fill-current"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            {isMenuOpen ? (
+              <path
+                className="fill-red-700"
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z"
+              />
+            ) : (
+              <path
+                className="fill-white"
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z"
+              />
+            )}
+          </svg>
+        </button>
+        {isMenuOpen && (
+          <div className="absolute lg:hidden bg-white text-black rounded-md p-4 space-y-2 mx-1 z-50 flex">
+            <ul className="flex flex-col items-center">
+              <li className="hover:text-red-700">
+                <Link to="/">HOME</Link>
+              </li>
+              <li className="text-sm py-2">
+                <Link to="/movie/now-playing">Now Playing</Link>
+              </li>
+              <li className="text-sm py-2">
+                <Link to="/movie/popular-movies">Popular Movies</Link>
+              </li>
+              <li className="text-xs py-2">
+                <Link to="/movie/top-rated">Top Rated Movies</Link>
+              </li>
+              <li className="text-sm py-2">
+                <Link to="/movie/upcoming-movies">UpcomingMovies</Link>
+              </li>
+              <li className="text-sm py-2">
+                <Link to="/tv/popular">Popular Shows</Link>
+              </li>
+              <li className="text-xs py-2">
+                <Link to="/tv/on-the-air">On the Air Shows</Link>
+              </li>
+              <li className="text-xs py-2">
+                <Link to="/tv/airing-today">Airing Today Shows</Link>
+              </li>
+              <li className="text-sm py-2">
+                <Link to="/tv/top-rated">Top Rated Shows</Link>
+              </li>
+              <li className="text-sm py-2">
+                <Link to="/lists">LISTS</Link>
+              </li>
+              <li className="text-sm py-2">
+                <Link to="/people">PEOPLE</Link>
+              </li>
+            </ul>
+          </div>
+        )}
+      </div>
+      <div className="hidden lg:block">
         <ul className="flex justify-between space-x-9 mx-4 px-20 text-white font-rob font-semibold cursor-pointer items-center">
           <li className="hover:text-red-700">
             <Link to="/">HOME</Link>
@@ -60,7 +133,7 @@ export default function Navbar() {
                 ref={movieDropdownRef}
                 className="absolute bg-white text-black rounded-md p-2 space-y-2 mt-1 z-50"
               >
-                <li className="hover:text-red-700 border-b border-gray-300 ">
+                <li className="hover:text-red-700 border-b border-gray-300">
                   <Link to="/movie/now-playing">Now Playing</Link>
                 </li>
                 <li className="hover:text-red-700 border-b border-gray-300">
@@ -77,12 +150,12 @@ export default function Navbar() {
           </li>
           <li className="hover:text-red-700 relative" onClick={handleTvClick}>
             <span>TV SHOWS</span>
-            {showTvList && (
+            {showTvlist && (
               <ul
                 ref={tvDropdownRef}
                 className="absolute bg-white text-black rounded-md p-2 space-y-2 mt-1 z-50"
               >
-                <li className="hover:text-red-700 border-b border-gray-300 ">
+                <li className="hover:text-red-700 border-b border-gray-300">
                   <Link to="/tv/popular">Popular</Link>
                 </li>
                 <li className="hover:text-red-700 border-b border-gray-300">

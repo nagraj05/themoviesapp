@@ -53,11 +53,11 @@ export default function Home() {
             <div className="flex overflow-x-scroll  scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
               {upcoming.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <div className="w-44 border border-gray-500 rounded-2xl mx-5 my-3">
+                  <div className="w-40 border border-gray-500 rounded-lg mx-5 my-3">
                     <img
                       src={baseUrl + movie.poster_path}
                       alt=""
-                      className="h-52 w-44 rounded-2xl"
+                      className="h-54 w-40 rounded-lg"
                     />
                   </div>
                 </Link>
@@ -69,11 +69,11 @@ export default function Home() {
             <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
               {movies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <div className="w-44 border border-gray-500 rounded-2xl mx-5 my-3">
+                  <div className="w-40 border border-gray-500 rounded-lg mx-5 my-3">
                     <img
                       src={baseUrl + movie.poster_path}
                       alt=""
-                      className="h-52 w-44 rounded-2xl"
+                      className="h-54 w-40 rounded-lg"
                     />
                   </div>
                 </Link>

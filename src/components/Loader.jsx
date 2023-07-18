@@ -13,7 +13,9 @@ export default function Loader() {
       <div className="lightsaber ls-left ls-green"></div>
       <div className="lightsaber ls-right ls-red"></div>
     </div>
+    <div className="logoimg">
       <img src={logo} alt=""  />
+      </div>
     </div>
   );
 }
