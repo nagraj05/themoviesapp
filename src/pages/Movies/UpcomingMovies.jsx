@@ -20,6 +20,13 @@ export default function UpcomingMovies() {
 
   const baseUrl = "https://image.tmdb.org/t/p/w500";
 
+  const truncateTitle = (title, maxLength) => {
+    if (title.length <= maxLength) {
+      return title;
+    }
+    return title.substring(0, maxLength) + "...";
+  };
+
   return (
     <div>
       <Navbar />
@@ -34,7 +41,7 @@ export default function UpcomingMovies() {
               />
               <div>
                 <h4 className="text-white font-ptsans  m-2">
-                  {movie.original_title}
+                {truncateTitle(movie.original_title, 28)}
                 </h4>
                 <p className="text-white  m-2">IMDb: {movie.vote_average}/10</p>
               </div>
