@@ -37,9 +37,7 @@ export default function Peopledetails() {
   };
 
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/person/${id}?api_key=${api_key}`
-    )
+    fetch(`https://api.themoviedb.org/3/person/${id}?api_key=${api_key}`)
       .then((response) => response.json())
       .then((data) => setPeople(data))
       .catch((error) => console.log(error));
@@ -56,7 +54,9 @@ export default function Peopledetails() {
 
   const baseUrl = "https://image.tmdb.org/t/p/w500/";
 
-  const filteredCredits = credits.filter((movie) => movie.title);
+  const filteredCredits = credits.filter(
+    (movie) => movie.title && movie.poster_path
+  );
 
   const truncateTitle = (title, maxLength) => {
     if (title.length > maxLength) {
@@ -76,9 +76,7 @@ export default function Peopledetails() {
         />
         <div className="flex flex-col overflow-hidden">
           <div className="flex flex-col m-5">
-            <h2 className="text-white font-nunito text-4xl">
-              {people.name}
-            </h2>
+            <h2 className="text-white font-nunito text-4xl">{people.name}</h2>
             <p className="text-white  bg-nav p-3 font-nunito rounded-xl my-1">
               🍰 - {formatDate(people.birthday)} (
               {calculateAge(people.birthday)} years)
@@ -97,9 +95,7 @@ export default function Peopledetails() {
             </div>
           </div>
           <div className="flex flex-col">
-            <h3 className="text-white mx-6 font-nunito text-lg">
-              Known For:
-            </h3>
+            <h3 className="text-white mx-6 font-nunito text-lg">Known For:</h3>
 
             <div className="flex overflow-x-auto m-4 scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
               {filteredCredits.map((movie) => (
@@ -116,8 +112,8 @@ export default function Peopledetails() {
                       className="w-52 h-42 mx-20 p-4 object-cover rounded-lg"
                     />
                   )}
-                  <p className="text-white text-base p-4 font-ptsans">
-                    {truncateTitle(movie.title, 30)}
+                  <p className="text-white text-base p-4 font-nunito">
+                    {truncateTitle(movie.title, 15)}
                   </p>
                 </Link>
               ))}

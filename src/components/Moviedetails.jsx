@@ -16,6 +16,7 @@ export default function Moviedetails() {
   const [cast, setCast] = useState([]);
   const [reco, setReco] = useState([]);
   const [video, setVideo] = useState([]);
+  const [crew, setCrew] = useState([]);
 
   const api_key = import.meta.env.VITE_TMDB_API_KEY;
   const baseUrl = "https://image.tmdb.org/t/p/w500";
@@ -51,6 +52,13 @@ export default function Moviedetails() {
   }, [id, api_key]);
 
   useEffect(() => {
+    fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${api_key}`)
+      .then((response) => response.json())
+      .then((data) => setCrew(data.crew))
+      .catch((error) => console.log(error));
+  }, [id, api_key]);
+
+  useEffect(() => {
     fetch(
       `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${api_key}`
     )
@@ -69,6 +77,12 @@ export default function Moviedetails() {
   if (!details) {
     return <div>Movie not found</div>;
   }
+
+  const convertRuntime = (minutes) => {
+    const hours = Math.floor(minutes / 60);
+    const remainingMinutes = minutes % 60;
+    return `${hours}h ${remainingMinutes}m`;
+  };
 
   return (
     <div>
@@ -99,7 +113,9 @@ export default function Moviedetails() {
             <div className="flex bg-nav p-3 my-1 rounded-xl justify-around ">
               <div>
                 <AccessTimeIcon className="text-white" />
-                <p className="text-white font-rob">{details.runtime} min</p>
+                <p className="text-white font-rob">
+                  {convertRuntime(details.runtime)}
+                </p>
               </div>
               <div>
                 <GradeIcon className="text-white" />
@@ -142,13 +158,20 @@ export default function Moviedetails() {
             <p className="text-white rounded-xl font-nunito font-normal p-4 bg-nav my-2 ">
               {details.overview}
             </p>
+            <p className="text-white rounded-xl font-nunito font-normal p-4 bg-nav my-2 ">
+              Director :{" "}
+              {crew
+                .filter((person) => person.job === "Director")
+                .map((person) => person.name)
+                .join(", ")}
+            </p>
           </div>
         </div>
       </div>
       {/* CAST */}
       <div>
-        <h3 className="text-white text-4xl mx-7 my-5">Cast</h3>
-        <div className="flex overflow-x-auto m-5 scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+        <h3 className="text-white text-4xl font-nunito px-8 pt-2">Cast</h3>
+        <div className="flex overflow-x-auto mx-4 scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
           {cast.map((person) => {
             if (person.profile_path) {
               return (
@@ -176,6 +199,37 @@ export default function Moviedetails() {
           })}
         </div>
       </div>
+      {/*Collection */}
+      {details.belongs_to_collection && (
+        <div className="relative h-80 mx-10 my-5">
+          {details.belongs_to_collection && (
+            <div
+              className="absolute w-full h-80 px-10 bg-no-repeat bg-cover rounded-2xl"
+              style={{
+                backgroundImage: `url(${
+                  baseUrl + details.belongs_to_collection.backdrop_path
+                })`,
+              }}
+            />
+          )}
+          <div className="absolute top-0 left-0 w-full h-full bg-black rounded-2xl bg-opacity-50 flex flex-col items-center justify-center">
+            {details.belongs_to_collection && (
+              <div className="text-white text-4xl font-nunito mb-4">
+                {details.belongs_to_collection.name}
+              </div>
+            )}
+            <div className="flex flex-col items-center">
+              {details.belongs_to_collection && (
+                <Link to={`/collection/${details.belongs_to_collection.id}`}>
+                  <button className="text-white bg-blue-500 font-nunito px-6 py-3 rounded-lg">
+                    View the collection
+                  </button>
+                </Link>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
       {/* Trailers */}
       {video.length > 0 && (
         <div>
@@ -211,6 +265,37 @@ export default function Moviedetails() {
           </div>
         </div>
       )}
+      {/*Crew*/}
+      <div>
+        <h3 className="text-white text-4xl font-nunito px-8 pt-4  ">Crew</h3>
+        <div className="flex overflow-x-auto mx-4 scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+          {crew.map((person) => {
+            if (person.profile_path) {
+              return (
+                <Link
+                  to={`/people/${person.id}`}
+                  key={person.id}
+                  onClick={handlePeople}
+                  className="flex flex-col items-center mx-2 my-5 bg-nav rounded-lg w-52"
+                >
+                  <img
+                    src={`${baseUrl + person.profile_path}`}
+                    alt={person.name}
+                    className="w-52 h-42 mx-24 p-4   object-cover rounded-lg"
+                  />
+                  <p className="text-white text-lg font-ptsans">
+                    {person.name}
+                  </p>
+                  <p className="text-gray-400 px-2 pb-2 font-ptsans ">
+                    {person.job}
+                  </p>
+                </Link>
+              );
+            }
+            return null;
+          })}
+        </div>
+      </div>
       {/* Recommendations */}
       {reco.length > 0 && (
         <div>
@@ -234,7 +319,8 @@ export default function Moviedetails() {
                       {movie.original_title}
                     </h4>
                     <p className="text-white font-ptsans  m-2">
-                      IMDb: {movie.vote_average && movie.vote_average.toFixed(1)}
+                      IMDb:{" "}
+                      {movie.vote_average && movie.vote_average.toFixed(1)}
                     </p>
                   </div>
                 </div>

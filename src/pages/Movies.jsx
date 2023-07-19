@@ -10,9 +10,7 @@ export default function Movies() {
   const api_key = import.meta.env.VITE_TMDB_API_KEY;
 
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}`
-    )
+    fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${api_key}`)
       .then((response) => response.json())
       .then((data) => setMovies(data.results))
       .catch((error) => console.log(error));

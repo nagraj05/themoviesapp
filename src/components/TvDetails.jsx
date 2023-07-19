@@ -23,6 +23,14 @@ export default function TvDetails() {
     window.scrollTo({ top: 0 });
   };
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+  };
+
   useEffect(() => {
     fetch(`https://api.themoviedb.org/3/tv/${id}?api_key=${api_key}`)
       .then((response) => response.json())
@@ -83,9 +91,38 @@ export default function TvDetails() {
                 {details.tagline}
               </p>
             )}
+            <div className="text-white flex gap-8 rounded-xl font-nunito font-normal p-4 bg-nav my-2">
+              <p className="text-white">
+                <span className="text-yellow-500 font-ptsans">Seasons:</span>{" "}
+                {details.number_of_seasons}
+              </p>
+              <p className="text-white">
+                <span className="text-yellow-500 font-ptsans">Episodes:</span>{" "}
+                {details.number_of_episodes}
+              </p>
+              <p className="text-white">
+                <span className="text-yellow-500 font-ptsans">Country:</span>{" "}
+                {details.origin_country}
+              </p>
+              <p className="text-white">
+                <span className="text-yellow-500 font-ptsans">Language:</span>{" "}
+                {details.original_language}
+              </p>
+            </div>
+            <div className="text-white flex gap-8 rounded-xl font-nunito font-normal p-4 bg-nav my-2">
+              <p>
+                <span className="text-yellow-500 font-ptsans">Pilot:</span>{" "}
+                {formatDate(details.first_air_date)}
+              </p>
+              <p>
+                <span className="text-yellow-500 font-ptsans">Finale:</span>{" "}
+                {formatDate(details.last_air_date)}
+              </p>
+            </div>
             {details.genres && details.genres.length > 0 && (
               <p className="text-white bg-nav p-3 font-nunito rounded-xl my-1">
-                Genre: {details.genres.map((genre) => genre.name).join(", ")}
+                <span className="text-yellow-500 font-ptsans">Genre:</span>{" "}
+                {details.genres.map((genre) => genre.name).join(", ")}
               </p>
             )}
             <p className="text-white rounded-xl font-nunito font-normal p-4 bg-nav my-2">

@@ -7,7 +7,7 @@ import ButtonToTop from "../../components/ButtonToTop";
 function AiringToday() {
   const [popularShows, setPopularShows] = useState([]);
 
-  const api_key = import.meta.env.VITE_TMDB_API_KEY;  
+  const api_key = import.meta.env.VITE_TMDB_API_KEY;
   const handleRecommendationClick = () => {
     window.location.hash = "#top";
   };

@@ -131,7 +131,7 @@ export default function Navbar() {
             {showMovieList && (
               <ul
                 ref={movieDropdownRef}
-                className="absolute bg-white text-black rounded-md p-2 space-y-2 mt-1 z-50"
+                className="absolute bg-white text-black rounded-md p-2 space-y-2 mt-1 z-50 w-28"
               >
                 <li className="hover:text-red-700 border-b border-gray-300">
                   <Link to="/movie/now-playing">Now Playing</Link>
@@ -153,8 +153,11 @@ export default function Navbar() {
             {showTvlist && (
               <ul
                 ref={tvDropdownRef}
-                className="absolute bg-white text-black rounded-md p-2 space-y-2 mt-1 z-50"
+                className="absolute bg-white text-black rounded-md p-2 space-y-2 mt-1 z-50 w-28"
               >
+                <li className="hover:text-red-700 border-b border-gray-300">
+                  <Link to="/tv/top-rated">Top Rated</Link>
+                </li>
                 <li className="hover:text-red-700 border-b border-gray-300">
                   <Link to="/tv/popular">Popular</Link>
                 </li>
@@ -163,9 +166,6 @@ export default function Navbar() {
                 </li>
                 <li className="hover:text-red-700 border-b border-gray-300">
                   <Link to="/tv/airing-today">Airing Today</Link>
-                </li>
-                <li className="hover:text-red-700 border-b border-gray-300">
-                  <Link to="/tv/top-rated">Top Rated</Link>
                 </li>
               </ul>
             )}

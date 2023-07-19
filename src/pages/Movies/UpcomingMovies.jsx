@@ -10,9 +10,7 @@ export default function UpcomingMovies() {
   const api_key = import.meta.env.VITE_TMDB_API_KEY;
 
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/upcoming?api_key=${api_key}`
-    )
+    fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${api_key}`)
       .then((response) => response.json())
       .then((data) => setMovies(data.results))
       .catch((error) => console.log(error));
@@ -41,7 +39,7 @@ export default function UpcomingMovies() {
               />
               <div>
                 <h4 className="text-white font-ptsans  m-2">
-                {truncateTitle(movie.original_title, 28)}
+                  {truncateTitle(movie.original_title, 28)}
                 </h4>
                 <p className="text-white  m-2">IMDb: {movie.vote_average}/10</p>
               </div>

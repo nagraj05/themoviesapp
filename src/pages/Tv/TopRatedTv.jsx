@@ -12,7 +12,6 @@ function TopRatedTv() {
 
   const api_key = import.meta.env.VITE_TMDB_API_KEY;
 
-
   function subtract() {
     if (count > 1) {
       setCount((prevState) => prevState - 1);
@@ -21,18 +20,17 @@ function TopRatedTv() {
   function add() {
     setCount((prevState) => prevState + 1);
   }
-  
+
   useEffect(() => {
-    fetch(`https://api.themoviedb.org/3/tv/top_rated?api_key=${api_key}&page=${count}`)
+    fetch(
+      `https://api.themoviedb.org/3/tv/top_rated?api_key=${api_key}&page=${count}`
+    )
       .then((response) => response.json())
       .then((data) => setPopularShows(data.results))
       .catch((error) => console.log(error));
   }, [count, api_key]);
 
   const baseUrl = "https://image.tmdb.org/t/p/w500";
-
-
-
 
   return (
     <div>
@@ -52,11 +50,7 @@ function TopRatedTv() {
       </div>
       <div className="flex flex-wrap justify-center items-center">
         {popularShows.map((show) => (
-          <Link
-            key={show.id}
-            to={`/tv/${show.id}`}
-           
-          >
+          <Link key={show.id} to={`/tv/${show.id}`}>
             <div className="w-60 border border-gray-500 mx-5 my-3 ">
               <img
                 src={baseUrl + show.poster_path}

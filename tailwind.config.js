@@ -8,7 +8,8 @@ export default {
     extend: {
       backgroundColor:{
         nav: '#14181c',
-        body:'#1d232a'
+        body:'#1d232a',
+        box:'#445566'
       },
       fontFamily:{
         rob: ['Roboto', 'sans-serif'],
@@ -24,7 +25,8 @@ export default {
       },
       textColor:{
         nav: '#14181c',
-        body:'#1d232a'
+        body:'#1d232a',
+        word: '#99aabb'
       }
     },
   },

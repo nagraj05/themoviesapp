@@ -3,6 +3,7 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
 
 export default function People() {
   const [count, setCount] = useState(1);
@@ -53,7 +54,11 @@ export default function People() {
       </div>
       <div className="flex flex-wrap justify-center items-center">
         {people.map((person) => (
-          <Link key={person.id} to={`/people/${person.id}`} onClick={handleMoviesClick}>
+          <Link
+            key={person.id}
+            to={`/people/${person.id}`}
+            onClick={handleMoviesClick}
+          >
             <div className="w-60 border border-gray-500 mx-5 my-3 ">
               <img
                 src={baseUrl + person.profile_path}
@@ -67,6 +72,7 @@ export default function People() {
           </Link>
         ))}
       </div>
+      <Footer />
     </div>
   );
 }

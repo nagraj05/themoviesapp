@@ -3,20 +3,32 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer";
 import ButtonToTop from "../../components/ButtonToTop";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 export default function TopRatedMovies() {
   const [movies, setMovies] = useState([]);
+  const [count, setCount] = useState(1);
 
   const api_key = import.meta.env.VITE_TMDB_API_KEY;
 
+  function subtract() {
+    if (count > 1) {
+      setCount((prevState) => prevState - 1);
+    }
+  }
+  function add() {
+    setCount((prevState) => prevState + 1);
+  }
+
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/movie/top_rated?api_key=${api_key}`
+      `https://api.themoviedb.org/3/movie/top_rated?api_key=${api_key}&page=${count}`
     )
       .then((response) => response.json())
       .then((data) => setMovies(data.results))
       .catch((error) => console.log(error));
-  }, [api_key]);
+  }, [api_key, count]);
 
   const baseUrl = "https://image.tmdb.org/t/p/w500";
 
@@ -30,6 +42,19 @@ export default function TopRatedMovies() {
   return (
     <div>
       <Navbar />
+      <div className="flex m-5 justify-center">
+        <ArrowBackIosIcon
+          onClick={subtract}
+          className="text-white cursor-pointer rounded-md bg-nav p-2"
+          style={{ fontSize: "32px" }}
+        />
+        <h1 className="text-white">{count}</h1>
+        <ArrowForwardIosIcon
+          onClick={add}
+          className="text-white cursor-pointer bg-nav p-2"
+          style={{ fontSize: "32px" }}
+        />
+      </div>
       <div className="flex flex-wrap justify-center items-center">
         {movies.map((movie) => (
           <Link key={movie.id} to={`/movie/${movie.id}`}>
@@ -41,7 +66,7 @@ export default function TopRatedMovies() {
               />
               <div>
                 <h4 className="text-white font-ptsans  m-2">
-                {truncateTitle(movie.original_title, 28)}
+                  {truncateTitle(movie.original_title, 28)}
                 </h4>
                 <p className="text-white  m-2">IMDb: {movie.vote_average}/10</p>
               </div>
