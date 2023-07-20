@@ -18,13 +18,6 @@ export default function NowPlaying() {
 
   const baseUrl = "https://image.tmdb.org/t/p/w500";
 
-  const truncateTitle = (title, maxLength) => {
-    if (title.length <= maxLength) {
-      return title;
-    }
-    return title.substring(0, maxLength) + "...";
-  };
-
   return (
     <div>
       <Navbar />
@@ -39,7 +32,7 @@ export default function NowPlaying() {
               />
               <div>
                 <h4 className="text-white font-nunito  m-2">
-                  {truncateTitle(movie.original_title, 28)}
+                  {movie.original_title}
                 </h4>
                 <p className="text-white font-nunito  m-2">Rating : {movie.vote_average}/10</p>
               </div>

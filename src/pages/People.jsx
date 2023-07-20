@@ -4,6 +4,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
+import ButtonToTop from "../components/ButtonToTop";
 
 export default function People() {
   const [count, setCount] = useState(1);
@@ -67,6 +68,7 @@ export default function People() {
           </Link>
         ))}
       </div>
+      <ButtonToTop />
       <Footer />
     </div>
   );

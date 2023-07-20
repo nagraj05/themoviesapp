@@ -3,6 +3,7 @@ import Footer from "../components/Footer";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Search from "../components/Search";
+import ScrollButton from "../components/ScrollButton";
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
@@ -93,7 +94,7 @@ export default function Home() {
             </div>
           </div>
         )}
-        <div className="flex flex-col overflow-hidden   ">
+        <div className="flex flex-col overflow-hidden">
           <div className="p-6">
             <h3 className="text-white text-2xl font-nunito mx-2 mt-5">Upcoming Movies</h3>
             <div className="flex overflow-x-scroll  scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">

@@ -78,6 +78,13 @@ export default function Moviedetails() {
     return `${hours}h ${remainingMinutes}m`;
   };
 
+  const truncateReco = (title, maxLength) => {
+    if (title.length <= maxLength) {
+      return title;
+    }
+    return title.substring(0, maxLength) + "...";
+  };
+
   return (
     <div>
       <Navbar />
@@ -259,35 +266,37 @@ export default function Moviedetails() {
         </div>
       )}
       {/*Crew*/}
-      <div>
-        <h3 className="text-white text-4xl font-nunito px-8 pt-4  ">Crew</h3>
-        <div className="flex overflow-x-auto mx-4 scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
-          {crew.map((person) => {
-            if (person.profile_path) {
-              return (
-                <Link
-                  to={`/people/${person.id}`}
-                  key={person.id}
-                  className="flex flex-col items-center mx-2 my-5 bg-nav rounded-lg w-52"
-                >
-                  <img
-                    src={`${baseUrl + person.profile_path}`}
-                    alt={person.name}
-                    className="w-52 h-42 mx-24 p-4   object-cover rounded-lg"
-                  />
-                  <p className="text-white text-lg font-ptsans">
-                    {person.name}
-                  </p>
-                  <p className="text-gray-400 px-2 pb-2 font-ptsans ">
-                    {person.job}
-                  </p>
-                </Link>
-              );
-            }
-            return null;
-          })}
+      {crew.length > 0 && (
+        <div>
+          <h3 className="text-white text-4xl font-nunito px-8 pt-4  ">Crew</h3>
+          <div className="flex overflow-x-auto mx-4 scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+            {crew.map((person) => {
+              if (person.profile_path) {
+                return (
+                  <Link
+                    to={`/people/${person.id}`}
+                    key={person.id}
+                    className="flex flex-col items-center mx-2 my-5 bg-nav rounded-lg w-52"
+                  >
+                    <img
+                      src={`${baseUrl + person.profile_path}`}
+                      alt={person.name}
+                      className="w-52 h-42 mx-24 p-4   object-cover rounded-lg"
+                    />
+                    <p className="text-white text-lg font-ptsans">
+                      {person.name}
+                    </p>
+                    <p className="text-gray-400 px-2 pb-2 font-ptsans ">
+                      {person.job}
+                    </p>
+                  </Link>
+                );
+              }
+              return null;
+            })}
+          </div>
         </div>
-      </div>
+      )}
       {/* Recommendations */}
       {reco.length > 0 && (
         <div>
@@ -307,7 +316,7 @@ export default function Moviedetails() {
                   />
                   <div>
                     <h4 className="text-white font-ptsans text-lg  m-2">
-                      {movie.original_title}
+                      {truncateReco(movie.original_title, 22)}
                     </h4>
                   </div>
                 </div>

@@ -132,6 +132,7 @@ export default function TvDetails() {
         </div>
       </div>
       {/*Cast */}
+      {cast.length > 0 && (
       <div>
         <h3 className="text-white text-4xl mx-7 my-5">Cast</h3>
         <div className="flex overflow-x-auto m-5 scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
@@ -162,6 +163,7 @@ export default function TvDetails() {
           })}
         </div>
       </div>
+      )}
       {/*Trailers*/}
       {video.length > 0 && (
         <div>
@@ -219,9 +221,6 @@ export default function TvDetails() {
                     <h4 className="text-white font-ptsans text-lg  m-2">
                       {show.name}
                     </h4>
-                    <p className="text-white font-ptsans  m-2">
-                      IMDb: {show.vote_average && show.vote_average.toFixed(1)}
-                    </p>
                   </div>
                 </div>
               </Link>
