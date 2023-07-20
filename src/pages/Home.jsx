@@ -46,7 +46,7 @@ export default function Home() {
       <div className="flex">
         {searchQuery && (
           <div className="flex flex-col p-4">
-            <h3 className="text-white text-4xl mx-7 my-5">Search Results</h3>
+            <h3 className="text-white text-2xl font-nunito mx-7 my-5">Search Results</h3>
             <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
               {search.results &&
                 search.results.map((item) => {
@@ -95,11 +95,11 @@ export default function Home() {
         )}
         <div className="flex flex-col overflow-hidden   ">
           <div className="p-6">
-            <h3 className="text-white text-4xl mx-7 my-5">Upcoming</h3>
+            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">Upcoming Movies</h3>
             <div className="flex overflow-x-scroll  scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
               {upcoming.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <div className="w-40 border border-gray-500 rounded-lg mx-5 my-3">
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
                     <img
                       src={baseUrl + movie.poster_path}
                       alt=""
@@ -111,11 +111,11 @@ export default function Home() {
             </div>
           </div>
           <div className="flex flex-col p-4 ">
-            <h3 className="text-white text-4xl mx-7 my-5">Popular</h3>
+            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">Popular Movies</h3>
             <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
               {movies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <div className="w-40 border border-gray-500 rounded-lg mx-5 my-3">
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
                     <img
                       src={baseUrl + movie.poster_path}
                       alt=""

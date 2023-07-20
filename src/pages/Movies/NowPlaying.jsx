@@ -38,10 +38,10 @@ export default function NowPlaying() {
                 className="h-64 w-60"
               />
               <div>
-                <h4 className="text-white font-ptsans  m-2">
+                <h4 className="text-white font-nunito  m-2">
                   {truncateTitle(movie.original_title, 28)}
                 </h4>
-                <p className="text-white  m-2">IMDb: {movie.vote_average}/10</p>
+                <p className="text-white font-nunito  m-2">Rating : {movie.vote_average}/10</p>
               </div>
             </div>
           </Link>

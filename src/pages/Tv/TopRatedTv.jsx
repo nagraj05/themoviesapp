@@ -58,7 +58,7 @@ function TopRatedTv() {
                 className="h-64 w-60"
               />
               <div>
-                <h4 className="text-white font-ptsans  m-2">{show.name}</h4>
+                <h4 className="text-white font-nunito  m-2">{show.name}</h4>
                 {/* <p className="text-white  m-2">IMDb: {show.vote_average}/10</p> */}
               </div>
             </div>

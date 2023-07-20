@@ -32,9 +32,6 @@ export default function Peopledetails() {
   };
 
   const { id } = useParams();
-  const handleMoviesClick = () => {
-    window.scrollTo({ top: 0 });
-  };
 
   useEffect(() => {
     fetch(`https://api.themoviedb.org/3/person/${id}?api_key=${api_key}`)
@@ -84,25 +81,23 @@ export default function Peopledetails() {
             <p className="text-white  bg-nav p-3 font-nunito rounded-xl my-1">
               🏡 - {people.place_of_birth}
             </p>
-            <p className="text-white">{people.deathday}</p>
-            <div className="text-white  bg-nav p-3 font-nunito rounded-xl my-1">
-              {people.biography &&
-                people.biography.split("\n").map((paragraph, index) => (
+            {people.deathday && (<p className="text-white bg-nav p-3 font-nunito">Death: {people.deathday}</p>)}
+            {people.biography &&(<div className="text-white  bg-nav p-3 font-nunito rounded-xl my-1">
+                {people.biography.split("\n").map((paragraph, index) => (
                   <p key={index} className="mt-2">
                     {paragraph}
                   </p>
                 ))}
             </div>
+            )}
           </div>
           <div className="flex flex-col">
             <h3 className="text-white mx-6 font-nunito text-lg">Known For:</h3>
-
             <div className="flex overflow-x-auto m-4 scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
               {filteredCredits.map((movie) => (
                 <Link
                   key={movie.id}
                   to={`/movie/${movie.id}`}
-                  onClick={handleMoviesClick}
                   className="flex flex-col items-center mx-2 my-5 bg-nav rounded-lg w-52"
                 >
                   {movie.poster_path && (

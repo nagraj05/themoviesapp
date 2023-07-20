@@ -30,12 +30,6 @@ export default function Moviedetails() {
   };
 
   const { id } = useParams();
-  const handleRecommendationClick = () => {
-    window.location.hash = "#top";
-  };
-  const handlePeople = () => {
-    window.scrollTo({ top: 0 });
-  };
 
   useEffect(() => {
     fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}`)
@@ -150,11 +144,11 @@ export default function Moviedetails() {
                 </p>
               </div>
             </div>
-            <p className="text-white bg-nav p-3 font-nunito rounded-xl my-1">
-              Genre:
-              {details.genres &&
-                details.genres.map((genre) => genre.name).join(", ")}
-            </p>
+            {details.genres > 0 && (
+              <p className="text-white bg-nav p-3 font-nunito rounded-xl my-1">
+                Genre:{details.genres.map((genre) => genre.name).join(", ")}
+              </p>
+            )}
             <p className="text-white rounded-xl font-nunito font-normal p-4 bg-nav my-2 ">
               {details.overview}
             </p>
@@ -178,7 +172,6 @@ export default function Moviedetails() {
                 <Link
                   to={`/people/${person.id}`}
                   key={person.id}
-                  onClick={handlePeople}
                   className="flex flex-col items-center mx-2 my-5 bg-nav rounded-lg w-52"
                 >
                   <img
@@ -275,7 +268,6 @@ export default function Moviedetails() {
                 <Link
                   to={`/people/${person.id}`}
                   key={person.id}
-                  onClick={handlePeople}
                   className="flex flex-col items-center mx-2 my-5 bg-nav rounded-lg w-52"
                 >
                   <img
@@ -306,7 +298,6 @@ export default function Moviedetails() {
                 key={movie.id}
                 to={`/movie/${movie.id}`}
                 className="cursor-pointer"
-                onClick={handleRecommendationClick}
               >
                 <div className="w-60 border border-gray-500 mx-7 my-3 ">
                   <img
@@ -318,10 +309,6 @@ export default function Moviedetails() {
                     <h4 className="text-white font-ptsans text-lg  m-2">
                       {movie.original_title}
                     </h4>
-                    <p className="text-white font-ptsans  m-2">
-                      IMDb:{" "}
-                      {movie.vote_average && movie.vote_average.toFixed(1)}
-                    </p>
                   </div>
                 </div>
               </Link>

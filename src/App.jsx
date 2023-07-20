@@ -1,4 +1,8 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
 import Home from "./pages/Home";
 import Movies from "./pages/Movies";
 import Moviedetails from "./components/Moviedetails";
@@ -19,6 +23,7 @@ import Loader from "./components/Loader";
 import Collection from "./components/Collection";
 import { useState } from "react";
 import { useEffect } from "react";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -35,6 +40,8 @@ function App() {
       {isLoading ? (
         <Loader />
       ) : (
+        <>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/movies" element={<Movies />} />
@@ -54,6 +61,7 @@ function App() {
           <Route path="/people/:id" element={<Peopledetails />} />
           <Route path="/collection/:id" element={<Collection />} />
         </Routes>
+        </>
       )}
     </Router>
   );

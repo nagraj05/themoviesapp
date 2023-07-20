@@ -1,6 +1,7 @@
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import YouTubeIcon from '@mui/icons-material/YouTube';
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import RedditIcon from "@mui/icons-material/Reddit";
 
 export default function Footer() {
   return (
@@ -27,9 +28,16 @@ export default function Footer() {
         >
           <YouTubeIcon className="hover:text-red-600" />
         </a>
+        <a
+          href="https://www.reddit.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <RedditIcon className="hover:text-red-600" />
+        </a>
       </div>
-      <div className="text-white">
-        This website is developed by Nagraj Tadingi
+      <div className="text-white font-mono">
+        This website is created by Nagraj Tadingi
       </div>
     </div>
   );

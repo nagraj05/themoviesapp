@@ -8,9 +8,6 @@ function OnTheAir() {
   const [popularShows, setPopularShows] = useState([]);
 
   const api_key = import.meta.env.VITE_TMDB_API_KEY;
-  const handleRecommendationClick = () => {
-    window.location.hash = "#top";
-  };
 
   useEffect(() => {
     fetch(`https://api.themoviedb.org/3/tv/on_the_air?api_key=${api_key}`)
@@ -29,7 +26,6 @@ function OnTheAir() {
           <Link
             key={show.id}
             to={`/tv/${show.id}`}
-            onClick={handleRecommendationClick}
           >
             <div className="w-60 border border-gray-500 mx-5 my-3 ">
               <img
