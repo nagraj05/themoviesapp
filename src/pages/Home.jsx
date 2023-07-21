@@ -26,6 +26,11 @@ export default function Home() {
   const [horrorMovies, setHorrorMovies] = useState([]);
   const [musicMovies, setMusicMovies] = useState([]);
   const [mysteryMovies, setMysteryMovies] = useState([]);
+  const [romanceMovies, setRomanceMovies] = useState([]);
+  const [scifiMovies, setScifiMovies] = useState([]);
+  const [thrillerMovies, setThrillerMovies] = useState([]);
+  const [warMovies, setWarMovies] = useState([]);
+  const [westernMovies, setWesternMovies] = useState([]);
 
   const api_key = import.meta.env.VITE_TMDB_API_KEY;
 
@@ -321,6 +326,91 @@ export default function Home() {
           )
             .then((response) => response.json())
             .then((data) => setMysteryMovies(data.results))
+            .catch((error) => console.log(error));
+        }
+      })
+      .catch((error) => console.log(error));
+  }, [api_key]);
+
+  useEffect(() => {
+    fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${api_key}`)
+      .then((response) => response.json())
+      .then((data) => {
+        const romanceGenre = data.genres.find((genre) => genre.name === "Romance");
+        if (romanceGenre) {
+          fetch(
+            `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&with_genres=${romanceGenre.id}`
+          )
+            .then((response) => response.json())
+            .then((data) => setRomanceMovies(data.results))
+            .catch((error) => console.log(error));
+        }
+      })
+      .catch((error) => console.log(error));
+  }, [api_key]);
+
+  useEffect(() => {
+    fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${api_key}`)
+      .then((response) => response.json())
+      .then((data) => {
+        const scifiGenre = data.genres.find((genre) => genre.name === "Science Fiction");
+        if (scifiGenre) {
+          fetch(
+            `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&with_genres=${scifiGenre.id}`
+          )
+            .then((response) => response.json())
+            .then((data) => setScifiMovies(data.results))
+            .catch((error) => console.log(error));
+        }
+      })
+      .catch((error) => console.log(error));
+  }, [api_key]);
+
+  useEffect(() => {
+    fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${api_key}`)
+      .then((response) => response.json())
+      .then((data) => {
+        const thrillerGenre = data.genres.find((genre) => genre.name === "Thriller");
+        if (thrillerGenre) {
+          fetch(
+            `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&with_genres=${thrillerGenre.id}`
+          )
+            .then((response) => response.json())
+            .then((data) => setThrillerMovies(data.results))
+            .catch((error) => console.log(error));
+        }
+      })
+      .catch((error) => console.log(error));
+  }, [api_key]);
+
+  useEffect(() => {
+    fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${api_key}`)
+      .then((response) => response.json())
+      .then((data) => {
+        const warGenre = data.genres.find((genre) => genre.name === "War");
+        if (warGenre) {
+          fetch(
+            `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&with_genres=${warGenre.id}`
+          )
+            .then((response) => response.json())
+            .then((data) => setWarMovies(data.results))
+            .catch((error) => console.log(error));
+        }
+      })
+      .catch((error) => console.log(error));
+  }, [api_key]);
+
+  useEffect(() => {
+    fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${api_key}`)
+      .then((response) => response.json())
+      .then((data) => {
+        const westernGenre = data.genres.find((genre) => genre.name === "Western");
+        if (westernGenre) {
+          fetch(
+            `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&with_genres=${westernGenre.id}`
+          )
+            .then((response) => response.json())
+            .then((data) => setWesternMovies(data.results))
             .catch((error) => console.log(error));
         }
       })
@@ -678,6 +768,101 @@ export default function Home() {
             </h3>
             <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
               {mysteryMovies.map((movie) => (
+                <Link key={movie.id} to={`/movie/${movie.id}`}>
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                    <img
+                      src={baseUrl + movie.poster_path}
+                      alt=""
+                      className="h-54 w-40 rounded-lg"
+                    />
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+          {/* Romance Movies */}
+          <div className="flex flex-col p-4 ">
+            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
+              Romance Movies
+            </h3>
+            <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+              {romanceMovies.map((movie) => (
+                <Link key={movie.id} to={`/movie/${movie.id}`}>
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                    <img
+                      src={baseUrl + movie.poster_path}
+                      alt=""
+                      className="h-54 w-40 rounded-lg"
+                    />
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+          {/* Scifi Movies */}
+          <div className="flex flex-col p-4 ">
+            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
+              Science Fiction Movies
+            </h3>
+            <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+              {scifiMovies.map((movie) => (
+                <Link key={movie.id} to={`/movie/${movie.id}`}>
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                    <img
+                      src={baseUrl + movie.poster_path}
+                      alt=""
+                      className="h-54 w-40 rounded-lg"
+                    />
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+          {/* Thriller Movies */}
+          <div className="flex flex-col p-4 ">
+            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
+              Thriller Movies
+            </h3>
+            <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+              {thrillerMovies.map((movie) => (
+                <Link key={movie.id} to={`/movie/${movie.id}`}>
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                    <img
+                      src={baseUrl + movie.poster_path}
+                      alt=""
+                      className="h-54 w-40 rounded-lg"
+                    />
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+          {/* War Movies */}
+          <div className="flex flex-col p-4 ">
+            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
+              War Movies
+            </h3>
+            <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+              {warMovies.map((movie) => (
+                <Link key={movie.id} to={`/movie/${movie.id}`}>
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                    <img
+                      src={baseUrl + movie.poster_path}
+                      alt=""
+                      className="h-54 w-40 rounded-lg"
+                    />
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+          {/* Western Movies */}
+          <div className="flex flex-col p-4 ">
+            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
+              Western Movies
+            </h3>
+            <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+              {westernMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
                   <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
                     <img
