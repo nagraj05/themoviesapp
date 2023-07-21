@@ -111,7 +111,7 @@ export default function Moviedetails() {
                 {details.tagline}
               </p>
             )}
-            <div className="flex bg-nav p-3 my-1 rounded-xl justify-around ">
+            <div className="flex bg-nav p-3 my-1 rounded-xl justify-around">
               <div>
                 <AccessTimeIcon className="text-white" />
                 <p className="text-white font-rob">
@@ -156,9 +156,9 @@ export default function Moviedetails() {
                 Genre:{details.genres.map((genre) => genre.name).join(", ")}
               </p>
             )}
-            <p className="text-white rounded-xl font-nunito font-normal p-4 bg-nav my-2 ">
+            {details.overview && <p className="text-white rounded-xl font-nunito font-normal p-4 bg-nav my-2 ">
               {details.overview}
-            </p>
+            </p>}
             <p className="text-white rounded-xl font-nunito font-normal p-4 bg-nav my-2 ">
               Director :{" "}
               {crew
