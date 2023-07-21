@@ -5,7 +5,8 @@ import Footer from "./Footer";
 import { Link } from "react-router-dom";
 
 export default function Collection() {
-  const [collection, setCollection] = useState(null); // Initialize collection as null
+  const [collection, setCollection] = useState(null);
+  const [numberOfMovies, setNumberOfMovies] = useState(0);
 
   const api_key = import.meta.env.VITE_TMDB_API_KEY;
   const baseUrl = "https://image.tmdb.org/t/p/w500";
@@ -19,8 +20,18 @@ export default function Collection() {
       .catch((error) => console.log(error));
   }, [id, api_key]);
 
+  useEffect(() => {
+    fetch(`https://api.themoviedb.org/3/collection/${id}?api_key=${api_key}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setCollection(data);
+        setNumberOfMovies(data.parts.length);
+      })
+      .catch((error) => console.log(error));
+  }, [id, api_key]);
+
   if (!collection) {
-    return <div>Loading...</div>;
+    return <div className="text-white text-2xl">Loading...</div>;
   }
 
   const sortedParts = collection.parts.sort(
@@ -39,7 +50,8 @@ export default function Collection() {
           />
           <div>
             <h2 className="text-xl font-semibold">{collection.name}</h2>
-            <p className="text-gray-500 mt-2">{collection.overview}</p>
+            <p className="text-gray-500 text-lg mt-5">{collection.overview}</p>
+            <p className="text-gray-500 text-lg mt-5 ">Number of Movies : {numberOfMovies}</p>
           </div>
         </div>
       </div>
