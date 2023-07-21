@@ -11,18 +11,12 @@ export default function TvDetails() {
   const [video, setVideo] = useState([]);
   const [reco, setReco] = useState([]);
   const [creators, setCreators] = useState([]);
+  const [providers, setProviders] = useState([]);
 
   const api_key = import.meta.env.VITE_TMDB_API_KEY;
   const baseUrl = "https://image.tmdb.org/t/p/w500";
 
   const { id } = useParams();
-
-  const handleRecommendationClick = () => {
-    window.scrollTo({ top: 0 });
-  };
-  const handlePeople = () => {
-    window.scrollTo({ top: 0 });
-  };
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -69,6 +63,15 @@ export default function TvDetails() {
       .catch((error) => console.log(error));
   }, [id, api_key]);
 
+  useEffect(() => {
+    fetch(
+      `https://api.themoviedb.org/3/tv/${id}/watch/providers?api_key=${api_key}`
+    )
+      .then((response) => response.json())
+      .then((data) => setProviders(data))
+      .catch((error) => console.log(error));
+  }, [id, api_key]);
+
   if (!details) {
     return <div>Show not found</div>;
   }
@@ -87,6 +90,27 @@ export default function TvDetails() {
             alt=""
             className="h-500 w-350 rounded-lg"
           />
+          {providers.results?.IN?.flatrate && (
+            <div
+              className="flex absolute  mt-1 bg-white rounded-lg  items-center"
+              style={{ top: "500px", width: "330px" }}
+            >
+              {providers.results?.IN?.flatrate.map((provider) => (
+                <img
+                  key={provider.provider_id}
+                  src={`https://image.tmdb.org/t/p/original${provider.logo_path}`}
+                  alt={provider.provider_name}
+                  className="w-16 h-16 object-contain my-2 mx-2 "
+                />
+              ))}
+              <div className="flex flex-col items-center">
+                <p className="text-black font-ptsans text-3xl">Now Streaming</p>
+                <p className="text-black font-rob font-medium text-lg">
+                  Watch Now
+                </p>
+              </div>
+            </div>
+          )}
           <div className="flex flex-col m-5">
             <h2 className="text-white font-nunito text-4xl">
               {details.name}{" "}
@@ -151,21 +175,28 @@ export default function TvDetails() {
                 {details.overview}
               </p>
             )}
-            {creators.length >0 && (<div className="flex flex-col">
-              <p className="text-white font-nunito text-xl m-2">Created by :</p>
-              <div className="flex gap-5">
-              {creators.map((creator) => (
-                <Link key={creator.id} to={`/people/${creator.id}`} className="flex items-center gap-3">
-                  <img
-                    src={`${baseUrl}${creator.profile_path}`}
-                    alt={creator.name}
-                    className="w-20 h-20 object-cover rounded-full"
-                  />
-                  <p className="text-white font-nunito">{creator.name}</p>
-                </Link>
-              ))}
+            {creators.length > 0 && (
+              <div className="flex flex-col">
+                <p className="text-white font-nunito text-xl m-2">
+                  Created by :
+                </p>
+                <div className="flex gap-5">
+                  {creators.map((creator) => (
+                    <Link
+                      key={creator.id}
+                      to={`/people/${creator.id}`}
+                      className="flex items-center gap-3"
+                    >
+                      <img
+                        src={`${baseUrl}${creator.profile_path}`}
+                        alt={creator.name}
+                        className="w-20 h-20 object-cover rounded-full"
+                      />
+                      <p className="text-white font-nunito">{creator.name}</p>
+                    </Link>
+                  ))}
+                </div>
               </div>
-            </div>
             )}
           </div>
         </div>
@@ -181,7 +212,6 @@ export default function TvDetails() {
                   <Link
                     to={`/people/${person.id}`}
                     key={person.id}
-                    onClick={handlePeople}
                     className="flex flex-col items-center mx-2 my-5 bg-nav rounded-lg w-52"
                   >
                     <img
@@ -248,7 +278,6 @@ export default function TvDetails() {
                 key={show.id}
                 to={`/tv/${show.id}`}
                 className="cursor-pointer"
-                onClick={handleRecommendationClick}
               >
                 <div className="w-60 border border-gray-500 mx-7 my-3 ">
                   <img
