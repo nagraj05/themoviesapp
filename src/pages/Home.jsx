@@ -9,7 +9,7 @@ export default function Home() {
   const [search, setSearch] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [topRatedMovies, setTopRatedMovies] = useState([]);
-  const [topRatedMoviesPages, setTopRatedMoviesPages] = useState([]);
+  const [topRatedMoviesPages, setTopRatedMoviesPages] = useState(1);
   const [popularShows, setPopularShows] = useState([]);
   const [topRatedTv, setTopRatedTv] = useState([]);
   const [topRatedTvPages, setTopRatedTvPages] = useState(1);
@@ -536,7 +536,7 @@ export default function Home() {
           {/* Action Movies */}
           <div className="flex flex-col p-4 ">
             <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Action Movies
+              Full on Action Movies
             </h3>
             <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
               {actionMovies.map((movie) => (
@@ -593,7 +593,7 @@ export default function Home() {
           {/* Comedy Movies */}
           <div className="flex flex-col p-4 ">
             <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Comedy Movies
+              Only Laughs
             </h3>
             <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
               {comedyMovies.map((movie) => (
@@ -612,7 +612,7 @@ export default function Home() {
           {/* Crime Movies */}
           <div className="flex flex-col p-4 ">
             <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Crime Movies
+              Criminal with Style
             </h3>
             <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
               {crimeMovies.map((movie) => (
@@ -631,7 +631,7 @@ export default function Home() {
           {/* Documentary Movies */}
           <div className="flex flex-col p-4 ">
             <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Documentary Movies
+              Documentaries
             </h3>
             <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
               {documentaryMovies.map((movie) => (
@@ -669,7 +669,7 @@ export default function Home() {
           {/* Family Movies */}
           <div className="flex flex-col p-4 ">
             <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Family Movies
+              You Can Watch With Your Family
             </h3>
             <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
               {familyMovies.map((movie) => (
@@ -688,7 +688,7 @@ export default function Home() {
           {/* Fantasy Movies */}
           <div className="flex flex-col p-4 ">
             <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Fantasy Movies
+              Yo! Fantasies here.
             </h3>
             <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
               {fantasyMovies.map((movie) => (
@@ -707,7 +707,7 @@ export default function Home() {
           {/* History Movies */}
           <div className="flex flex-col p-4 ">
             <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              History Movies
+              Watch Little History Here
             </h3>
             <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
               {historyMovies.map((movie) => (
@@ -726,7 +726,7 @@ export default function Home() {
           {/* Horror Movies */}
           <div className="flex flex-col p-4 ">
             <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Horror Movies
+              Are You Scared?
             </h3>
             <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
               {horrorMovies.map((movie) => (
@@ -745,7 +745,7 @@ export default function Home() {
           {/* Music Movies */}
           <div className="flex flex-col p-4 ">
             <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Music Movies
+              Musicals for Life
             </h3>
             <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
               {musicMovies.map((movie) => (
@@ -764,7 +764,7 @@ export default function Home() {
           {/* Mystery Movies */}
           <div className="flex flex-col p-4 ">
             <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Mystery Movies
+              Ooh What A Mystery! 
             </h3>
             <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
               {mysteryMovies.map((movie) => (
@@ -783,7 +783,7 @@ export default function Home() {
           {/* Romance Movies */}
           <div className="flex flex-col p-4 ">
             <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Romance Movies
+              Aww Love these
             </h3>
             <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
               {romanceMovies.map((movie) => (
@@ -802,7 +802,7 @@ export default function Home() {
           {/* Scifi Movies */}
           <div className="flex flex-col p-4 ">
             <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Science Fiction Movies
+              Binge Worthy Sci-Fi Movies
             </h3>
             <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
               {scifiMovies.map((movie) => (
@@ -821,7 +821,7 @@ export default function Home() {
           {/* Thriller Movies */}
           <div className="flex flex-col p-4 ">
             <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Thriller Movies
+              Yay! Thrillers
             </h3>
             <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
               {thrillerMovies.map((movie) => (

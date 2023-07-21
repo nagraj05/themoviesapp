@@ -10,6 +10,7 @@ export default function TvDetails() {
   const [cast, setCast] = useState([]);
   const [video, setVideo] = useState([]);
   const [reco, setReco] = useState([]);
+  const [creators, setCreators] = useState([]);
 
   const api_key = import.meta.env.VITE_TMDB_API_KEY;
   const baseUrl = "https://image.tmdb.org/t/p/w500";
@@ -61,6 +62,13 @@ export default function TvDetails() {
       .catch((error) => console.log(error));
   }, [id, api_key]);
 
+  useEffect(() => {
+    fetch(`https://api.themoviedb.org/3/tv/${id}?api_key=${api_key}`)
+      .then((response) => response.json())
+      .then((data) => setCreators(data.created_by))
+      .catch((error) => console.log(error));
+  }, [id, api_key]);
+
   if (!details) {
     return <div>Show not found</div>;
   }
@@ -91,6 +99,19 @@ export default function TvDetails() {
                 {details.tagline}
               </p>
             )}
+            <div className="text-white flex gap-8 rounded-xl font-nunito font-normal p-4 bg-nav my-2">
+              <p>
+                {" "}
+                <span className="text-yellow-500 font-ptsans">
+                  Rating :{" "}
+                </span>{" "}
+                {details.vote_average && details.vote_average.toFixed(1)}
+              </p>
+              <p>
+                <span className="text-yellow-500 font-ptsans">Status : </span>{" "}
+                {details.status}
+              </p>
+            </div>
             <div className="text-white flex gap-8 rounded-xl font-nunito font-normal p-4 bg-nav my-2">
               <p className="text-white">
                 <span className="text-yellow-500 font-ptsans">Seasons:</span>{" "}
@@ -125,44 +146,62 @@ export default function TvDetails() {
                 {details.genres.map((genre) => genre.name).join(", ")}
               </p>
             )}
-            <p className="text-white rounded-xl font-nunito font-normal p-4 bg-nav my-2">
-              {details.overview}
-            </p>
+            {details.overview && (
+              <p className="text-white rounded-xl font-nunito font-normal p-4 bg-nav my-2">
+                {details.overview}
+              </p>
+            )}
+            {creators.length >0 && (<div className="flex flex-col">
+              <p className="text-white font-nunito text-xl m-2">Created by :</p>
+              <div className="flex gap-5">
+              {creators.map((creator) => (
+                <Link key={creator.id} to={`/people/${creator.id}`} className="flex items-center gap-3">
+                  <img
+                    src={`${baseUrl}${creator.profile_path}`}
+                    alt={creator.name}
+                    className="w-20 h-20 object-cover rounded-full"
+                  />
+                  <p className="text-white font-nunito">{creator.name}</p>
+                </Link>
+              ))}
+              </div>
+            </div>
+            )}
           </div>
         </div>
       </div>
       {/*Cast */}
       {cast.length > 0 && (
-      <div>
-        <h3 className="text-white text-4xl mx-7 my-5">Cast</h3>
-        <div className="flex overflow-x-auto m-5 scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
-          {cast.map((person) => {
-            if (person.profile_path) {
-              return (
-                <Link
-                  to={`/people/${person.id}`}
-                  key={person.id}
-                  onClick={handlePeople}
-                  className="flex flex-col items-center mx-2 my-5 bg-nav rounded-lg w-52"
-                >
-                  <img
-                    src={`${baseUrl + person.profile_path}`}
-                    alt={person.name}
-                    className="w-52 h-42 mx-24 p-4   object-cover rounded-lg"
-                  />
-                  <p className="text-white text-lg font-ptsans">
-                    {person.name}
-                  </p>
-                  <p className="text-gray-400 font-ptsans py-1">
-                    {person.character}
-                  </p>
-                </Link>
-              );
-            }
-            return null;
-          })}
+        <div>
+          <h3 className="text-white text-4xl mx-7 my-5">Cast</h3>
+          <div className="flex overflow-x-auto m-5 scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+            {cast.map((person) => {
+              if (person.profile_path) {
+                return (
+                  <Link
+                    to={`/people/${person.id}`}
+                    key={person.id}
+                    onClick={handlePeople}
+                    className="flex flex-col items-center mx-2 my-5 bg-nav rounded-lg w-52"
+                  >
+                    <img
+                      src={`${baseUrl + person.profile_path}`}
+                      alt={person.name}
+                      className="w-52 h-42 mx-24 p-4   object-cover rounded-lg"
+                    />
+                    <p className="text-white text-lg font-ptsans">
+                      {person.name}
+                    </p>
+                    <p className="text-gray-400 font-ptsans py-1">
+                      {person.character}
+                    </p>
+                  </Link>
+                );
+              }
+              return null;
+            })}
+          </div>
         </div>
-      </div>
       )}
       {/*Trailers*/}
       {video.length > 0 && (
