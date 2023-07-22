@@ -36,16 +36,16 @@ export default function People() {
   return (
     <div>
       <Navbar />
-      <div className="flex m-5 justify-center">
+      <div className="flex m-5 justify-center items-center">
         <ArrowBackIosIcon
           onClick={subtract}
-          className="text-white cursor-pointer rounded-md bg-nav p-2"
+          className="text-white cursor-pointer rounded-md  bg-nav p-2"
           style={{ fontSize: "32px" }}
         />
-        <h1 className="text-white">{count}</h1>
+        <h1 className="text-white mx-2 text-lg font-rob">{count}</h1>
         <ArrowForwardIosIcon
           onClick={add}
-          className="text-white cursor-pointer bg-nav p-2"
+          className="text-white cursor-pointer rounded-md bg-nav p-2"
           style={{ fontSize: "32px" }}
         />
       </div>

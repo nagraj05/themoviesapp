@@ -27,6 +27,7 @@ export default function PopularMovies() {
   return (
     <div>
       <Navbar />
+      <p className="text-white flex justify-center text-4xl font-nunito mt-5">Popular Movies</p>
       <div className="flex flex-wrap justify-center items-center">
         {movies.map((movie) => (
           <Link key={movie.id} to={`/movie/${movie.id}`}>

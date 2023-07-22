@@ -80,38 +80,17 @@ export default function TvDetails() {
     <div>
       <Navbar />
       <div
-        className=" flex flex-col relative mx-0 h-full bg-no-repeat bg-cover"
+        className=" flex flex-col relative h-full bg-no-repeat bg-cover"
         style={{ backgroundImage: `url(${baseUrl + details.backdrop_path})` }}
       >
         <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-80"></div>
-        <div className="flex mx-20 my-5 relative z-10">
+        <div className="flex mx-20 my-5 relative z-10 ">
           <img
             src={baseUrl + details.poster_path}
             alt=""
             className="h-500 w-350 rounded-lg"
           />
-          {providers.results?.IN?.flatrate && (
-            <div
-              className="flex absolute  mt-1 bg-white rounded-lg  items-center"
-              style={{ top: "500px", width: "330px" }}
-            >
-              {providers.results?.IN?.flatrate.map((provider) => (
-                <img
-                  key={provider.provider_id}
-                  src={`https://image.tmdb.org/t/p/original${provider.logo_path}`}
-                  alt={provider.provider_name}
-                  className="w-16 h-16 object-contain my-2 mx-2 "
-                />
-              ))}
-              <div className="flex flex-col items-center">
-                <p className="text-black font-ptsans text-3xl">Now Streaming</p>
-                <p className="text-black font-rob font-medium text-lg">
-                  Watch Now
-                </p>
-              </div>
-            </div>
-          )}
-          <div className="flex flex-col m-5">
+          <div className="flex flex-col m-5 ">
             <h2 className="text-white font-nunito text-4xl">
               {details.name}{" "}
               <span className="font-mono">
@@ -195,6 +174,26 @@ export default function TvDetails() {
                       <p className="text-white font-nunito">{creator.name}</p>
                     </Link>
                   ))}
+                </div>
+              </div>
+            )}
+            {providers.results?.IN?.flatrate && (
+              <div className="flex items-center rounded-lg mt-4 bg-white now-streaming-container">
+                {providers.results?.IN?.flatrate.map((provider) => (
+                  <img
+                    src={`https://image.tmdb.org/t/p/original${provider.logo_path}`}
+                    key={provider.provider_id}
+                    alt=""
+                    className="w-16 h-16 object-contain m-2 border  border-red-600 "
+                  />
+                ))}
+                <div className="flex flex-col items-center ml-5">
+                  <p className="text-gray-500 font-ptsans text-3xl">
+                    Now Streaming
+                  </p>
+                  <p className="text-black font-rob font-medium text-lg">
+                    Watch Now
+                  </p>
                 </div>
               </div>
             )}

@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import Search from "../components/Search";
 
 export default function Home() {
-  const [upcoming, setUpcoming] = useState([]);
   const [search, setSearch] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [topRatedMovies, setTopRatedMovies] = useState([]);
@@ -31,6 +30,9 @@ export default function Home() {
   const [thrillerMovies, setThrillerMovies] = useState([]);
   const [warMovies, setWarMovies] = useState([]);
   const [westernMovies, setWesternMovies] = useState([]);
+  const [trendingMovies, setTrendingMovies] = useState([]);
+  const [trendingTv, setTrendingTv] = useState([]);
+  const [trendingPeople, setTrendingPeople] = useState([]);
 
   const api_key = import.meta.env.VITE_TMDB_API_KEY;
 
@@ -46,12 +48,25 @@ export default function Home() {
   }, [api_key, searchQuery]);
 
   useEffect(() => {
-    fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${api_key}`)
+    fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${api_key}`)
       .then((response) => response.json())
-      .then((data) => setUpcoming(data.results))
+      .then((data) => setTrendingMovies(data.results))
       .catch((error) => console.log(error));
   }, [api_key]);
 
+  useEffect(()=>{
+    fetch(`https://api.themoviedb.org/3/trending/tv/day?api_key=${api_key}`)
+    .then((response) => response.json())
+    .then((data) => setTrendingTv(data.results))
+    .catch((error) => console .log(error))
+  }, [api_key])
+
+  useEffect(()=>{
+    fetch(`https://api.themoviedb.org/3/trending/person/day?api_key=${api_key}`)
+    .then((response) => response.json())
+    .then((data) => setTrendingPeople(data.results))
+    .catch((error) => console .log(error))
+  }, [api_key])
   useEffect(() => {
     fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${api_key}`)
       .then((response) => response.json())
@@ -476,13 +491,13 @@ export default function Home() {
           </div>
         )}
         <div className="flex flex-col overflow-hidden">
-          {/*Upcoming Movies*/}
+          {/*Trending*/}
           <div className="p-6">
             <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Upcoming Movies
+              Trending Movies
             </h3>
             <div className="flex overflow-x-scroll  scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
-              {upcoming.map((movie) => (
+              {trendingMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
                   <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
                     <img
@@ -490,6 +505,45 @@ export default function Home() {
                       alt=""
                       className="h-54 w-40 rounded-lg"
                     />
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+          {/*Trending Tv*/}
+          <div className="p-6">
+            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
+              Trending Shows
+            </h3>
+            <div className="flex overflow-x-scroll  scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+              {trendingTv.map((movie) => (
+                <Link key={movie.id} to={`/tv/${movie.id}`}>
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                    <img
+                      src={baseUrl + movie.poster_path}
+                      alt=""
+                      className="h-54 w-40 rounded-lg"
+                    />
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+           {/*Trending People*/}
+           <div className="p-6">
+            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
+              Trending on Google 
+            </h3>
+            <div className="flex overflow-x-scroll  scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+              {trendingPeople.map((movie) => (
+                <Link key={movie.id} to={`/people/${movie.id}`}>
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                    <img
+                      src={baseUrl + movie.profile_path}
+                      alt=""
+                      className="h-54 w-40 rounded-t-lg"
+                    />
+                    <h4 className="text-white font-ptsans  m-2">{movie.name}</h4>
                   </div>
                 </Link>
               ))}

@@ -21,6 +21,7 @@ function OnTheAir() {
   return (
     <div>
       <Navbar />
+      <p className="text-white flex justify-center text-4xl font-nunito mt-5">Streaming on Tv</p>
       <div className="flex flex-wrap justify-center items-center">
         {popularShows.map((show) => (
           <Link
