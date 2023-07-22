@@ -176,6 +176,9 @@ export default function Navbar() {
           <li className="hover:text-red-700">
             <Link to="/people">PEOPLE</Link>
           </li>
+          <li className="hover:text-red-700">
+            <Link to="/search">SEARCH</Link>
+          </li>
         </ul>
       </div>
     </div>

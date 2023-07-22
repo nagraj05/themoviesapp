@@ -2,11 +2,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Search from "../components/Search";
 
 export default function Home() {
-  const [search, setSearch] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
   const [topRatedMovies, setTopRatedMovies] = useState([]);
   const [topRatedMoviesPages, setTopRatedMoviesPages] = useState(1);
   const [popularShows, setPopularShows] = useState([]);
@@ -37,36 +34,26 @@ export default function Home() {
   const api_key = import.meta.env.VITE_TMDB_API_KEY;
 
   useEffect(() => {
-    if (searchQuery) {
-      fetch(
-        `https://api.themoviedb.org/3/search/multi?query=${searchQuery}&api_key=${api_key}`
-      )
-        .then((response) => response.json())
-        .then((data) => setSearch(data))
-        .catch((error) => console.log(error));
-    }
-  }, [api_key, searchQuery]);
-
-  useEffect(() => {
     fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${api_key}`)
       .then((response) => response.json())
       .then((data) => setTrendingMovies(data.results))
       .catch((error) => console.log(error));
   }, [api_key]);
 
-  useEffect(()=>{
+  useEffect(() => {
     fetch(`https://api.themoviedb.org/3/trending/tv/day?api_key=${api_key}`)
-    .then((response) => response.json())
-    .then((data) => setTrendingTv(data.results))
-    .catch((error) => console .log(error))
-  }, [api_key])
+      .then((response) => response.json())
+      .then((data) => setTrendingTv(data.results))
+      .catch((error) => console.log(error));
+  }, [api_key]);
 
-  useEffect(()=>{
+  useEffect(() => {
     fetch(`https://api.themoviedb.org/3/trending/person/day?api_key=${api_key}`)
-    .then((response) => response.json())
-    .then((data) => setTrendingPeople(data.results))
-    .catch((error) => console .log(error))
-  }, [api_key])
+      .then((response) => response.json())
+      .then((data) => setTrendingPeople(data.results))
+      .catch((error) => console.log(error));
+  }, [api_key]);
+
   useEffect(() => {
     fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${api_key}`)
       .then((response) => response.json())
@@ -249,7 +236,9 @@ export default function Home() {
     fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${api_key}`)
       .then((response) => response.json())
       .then((data) => {
-        const familyGenre = data.genres.find((genre) => genre.name === "Family");
+        const familyGenre = data.genres.find(
+          (genre) => genre.name === "Family"
+        );
         if (familyGenre) {
           fetch(
             `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&with_genres=${familyGenre.id}`
@@ -266,7 +255,9 @@ export default function Home() {
     fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${api_key}`)
       .then((response) => response.json())
       .then((data) => {
-        const fantasyGenre = data.genres.find((genre) => genre.name === "Fantasy");
+        const fantasyGenre = data.genres.find(
+          (genre) => genre.name === "Fantasy"
+        );
         if (fantasyGenre) {
           fetch(
             `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&with_genres=${fantasyGenre.id}`
@@ -283,7 +274,9 @@ export default function Home() {
     fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${api_key}`)
       .then((response) => response.json())
       .then((data) => {
-        const historyGenre = data.genres.find((genre) => genre.name === "History");
+        const historyGenre = data.genres.find(
+          (genre) => genre.name === "History"
+        );
         if (historyGenre) {
           fetch(
             `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&with_genres=${historyGenre.id}`
@@ -300,7 +293,9 @@ export default function Home() {
     fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${api_key}`)
       .then((response) => response.json())
       .then((data) => {
-        const horrorGenre = data.genres.find((genre) => genre.name === "Horror");
+        const horrorGenre = data.genres.find(
+          (genre) => genre.name === "Horror"
+        );
         if (horrorGenre) {
           fetch(
             `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&with_genres=${horrorGenre.id}`
@@ -334,7 +329,9 @@ export default function Home() {
     fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${api_key}`)
       .then((response) => response.json())
       .then((data) => {
-        const mysteryGenre = data.genres.find((genre) => genre.name === "Mystery");
+        const mysteryGenre = data.genres.find(
+          (genre) => genre.name === "Mystery"
+        );
         if (mysteryGenre) {
           fetch(
             `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&with_genres=${mysteryGenre.id}`
@@ -351,7 +348,9 @@ export default function Home() {
     fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${api_key}`)
       .then((response) => response.json())
       .then((data) => {
-        const romanceGenre = data.genres.find((genre) => genre.name === "Romance");
+        const romanceGenre = data.genres.find(
+          (genre) => genre.name === "Romance"
+        );
         if (romanceGenre) {
           fetch(
             `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&with_genres=${romanceGenre.id}`
@@ -368,7 +367,9 @@ export default function Home() {
     fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${api_key}`)
       .then((response) => response.json())
       .then((data) => {
-        const scifiGenre = data.genres.find((genre) => genre.name === "Science Fiction");
+        const scifiGenre = data.genres.find(
+          (genre) => genre.name === "Science Fiction"
+        );
         if (scifiGenre) {
           fetch(
             `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&with_genres=${scifiGenre.id}`
@@ -385,7 +386,9 @@ export default function Home() {
     fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${api_key}`)
       .then((response) => response.json())
       .then((data) => {
-        const thrillerGenre = data.genres.find((genre) => genre.name === "Thriller");
+        const thrillerGenre = data.genres.find(
+          (genre) => genre.name === "Thriller"
+        );
         if (thrillerGenre) {
           fetch(
             `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&with_genres=${thrillerGenre.id}`
@@ -419,7 +422,9 @@ export default function Home() {
     fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${api_key}`)
       .then((response) => response.json())
       .then((data) => {
-        const westernGenre = data.genres.find((genre) => genre.name === "Western");
+        const westernGenre = data.genres.find(
+          (genre) => genre.name === "Western"
+        );
         if (westernGenre) {
           fetch(
             `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&with_genres=${westernGenre.id}`
@@ -437,59 +442,7 @@ export default function Home() {
   return (
     <div>
       <Navbar />
-      <Search onSearch={setSearchQuery} />
       <div className="flex">
-        {searchQuery && (
-          <div className="flex flex-col p-4">
-            <h3 className="text-white text-2xl font-nunito mx-7 my-5">
-              Search Results
-            </h3>
-            <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
-              {search.results &&
-                search.results.map((item) => {
-                  if (item.media_type === "movie") {
-                    return (
-                      <Link key={item.id} to={`/movie/${item.id}`}>
-                        <div className="w-40 border border-gray-500 rounded-lg mx-5 my-3">
-                          <img
-                            src={baseUrl + item.poster_path}
-                            alt=""
-                            className="h-54 w-40 rounded-lg"
-                          />
-                        </div>
-                      </Link>
-                    );
-                  } else if (item.media_type === "tv") {
-                    return (
-                      <Link key={item.id} to={`/tv/${item.id}`}>
-                        <div className="w-40 border border-gray-500 rounded-lg mx-5 my-3">
-                          <img
-                            src={baseUrl + item.poster_path}
-                            alt=""
-                            className="h-54 w-40 rounded-lg"
-                          />
-                        </div>
-                      </Link>
-                    );
-                  } else if (item.media_type === "person") {
-                    return (
-                      <Link key={item.id} to={`/people/${item.id}`}>
-                        <div className="w-40 border border-gray-500 rounded-lg mx-5 my-3">
-                          <img
-                            src={baseUrl + item.profile_path}
-                            alt=""
-                            className="h-54 w-40 rounded-lg"
-                          />
-                        </div>
-                      </Link>
-                    );
-                  } else {
-                    return null;
-                  }
-                })}
-            </div>
-          </div>
-        )}
         <div className="flex flex-col overflow-hidden">
           {/*Trending*/}
           <div className="p-6">
@@ -529,10 +482,10 @@ export default function Home() {
               ))}
             </div>
           </div>
-           {/*Trending People*/}
-           <div className="p-6">
+          {/*Trending People*/}
+          <div className="p-6">
             <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Trending on Google 
+              Trending on Google
             </h3>
             <div className="flex overflow-x-scroll  scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
               {trendingPeople.map((movie) => (
@@ -543,7 +496,9 @@ export default function Home() {
                       alt=""
                       className="h-54 w-40 rounded-t-lg"
                     />
-                    <h4 className="text-white font-ptsans  m-2">{movie.name}</h4>
+                    <h4 className="text-white font-ptsans  m-2">
+                      {movie.name}
+                    </h4>
                   </div>
                 </Link>
               ))}
@@ -555,17 +510,18 @@ export default function Home() {
               Top Rated Movies
             </h3>
             <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
-              {topRatedMovies && (topRatedMovies.map((movie) => (
-                <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
-                    <img
-                      src={baseUrl + movie.poster_path}
-                      alt=""
-                      className="h-54 w-40 rounded-lg"
-                    />
-                  </div>
-                </Link>
-              )))}
+              {topRatedMovies &&
+                topRatedMovies.map((movie) => (
+                  <Link key={movie.id} to={`/movie/${movie.id}`}>
+                    <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                      <img
+                        src={baseUrl + movie.poster_path}
+                        alt=""
+                        className="h-54 w-40 rounded-lg"
+                      />
+                    </div>
+                  </Link>
+                ))}
             </div>
           </div>
           {/*Top Rated Tv Shows*/}
@@ -818,7 +774,7 @@ export default function Home() {
           {/* Mystery Movies */}
           <div className="flex flex-col p-4 ">
             <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Ooh What A Mystery! 
+              Ooh What A Mystery!
             </h3>
             <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
               {mysteryMovies.map((movie) => (

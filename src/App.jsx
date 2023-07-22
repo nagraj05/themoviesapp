@@ -24,6 +24,7 @@ import Collection from "./components/Collection";
 import { useState } from "react";
 import { useEffect } from "react";
 import ScrollToTop from "./components/ScrollToTop";
+import SearchPage from "./pages/SearchPage"
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -60,6 +61,7 @@ function App() {
           <Route path="/people" element={<People />} />
           <Route path="/people/:id" element={<Peopledetails />} />
           <Route path="/collection/:id" element={<Collection />} />
+          <Route path="/search" element={<SearchPage />}/>
         </Routes>
         </>
       )}
