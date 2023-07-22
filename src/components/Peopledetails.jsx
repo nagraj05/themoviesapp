@@ -146,7 +146,7 @@ export default function Peopledetails() {
             )}
             {people.deathday && (
               <p className="text-white bg-nav p-3 font-nunito">
-                Death: {people.deathday}
+                Death : {people.deathday}
               </p>
             )}
             {people.biography && (

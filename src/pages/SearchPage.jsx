@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
 import Search from "../components/Search";
+import Footer from "../components/Footer";
 
 export default function SearchPage() {
   const [search, setSearch] = useState([]);
@@ -27,7 +28,7 @@ export default function SearchPage() {
       <Search onSearch={setSearchQuery} />
       {searchQuery ? (
         <div className="flex flex-col p-4">
-          <h3 className="text-white text-2xl font-nunito mx-7 my-5">
+          <h3 className="text-white text-2xl font-ptsans mx-7 my-5">
             Search Results
           </h3>
           <div className="flex flex-wrap">
@@ -76,12 +77,13 @@ export default function SearchPage() {
           </div>
         </div>
       ) : (
-        <div className="flex justify-center h-96 items-center">
-          <h2 className="text-gray-400 text-3xl font-ptsans">
+        <div className="flex justify-center h-96 items-center ">
+          <h2 className="text-gray-400 text-3xl font-ptsans ">
             Search for Movies, Shows & People...
           </h2>
         </div>
       )}
+      <Footer />
     </div>
   );
 }

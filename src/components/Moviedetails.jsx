@@ -17,6 +17,7 @@ export default function Moviedetails() {
   const [reco, setReco] = useState([]);
   const [video, setVideo] = useState([]);
   const [crew, setCrew] = useState([]);
+  const [providers, setProviders] = useState([]);
 
   const api_key = import.meta.env.VITE_TMDB_API_KEY;
   const baseUrl = "https://image.tmdb.org/t/p/w500";
@@ -65,6 +66,15 @@ export default function Moviedetails() {
     fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${api_key}`)
       .then((response) => response.json())
       .then((data) => setVideo(data.results))
+      .catch((error) => console.log(error));
+  }, [id, api_key]);
+
+  useEffect(() => {
+    fetch(
+      `https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=${api_key}`
+    )
+      .then((response) => response.json())
+      .then((data) => setProviders(data))
       .catch((error) => console.log(error));
   }, [id, api_key]);
 
@@ -156,9 +166,11 @@ export default function Moviedetails() {
                 Genre:{details.genres.map((genre) => genre.name).join(", ")}
               </p>
             )}
-            {details.overview && <p className="text-white rounded-xl font-nunito font-normal p-4 bg-nav my-2 ">
-              {details.overview}
-            </p>}
+            {details.overview && (
+              <p className="text-white rounded-xl font-nunito font-normal p-4 bg-nav my-2 ">
+                {details.overview}
+              </p>
+            )}
             <p className="text-white rounded-xl font-nunito font-normal p-4 bg-nav my-2 ">
               Director :{" "}
               {crew
@@ -166,6 +178,26 @@ export default function Moviedetails() {
                 .map((person) => person.name)
                 .join(", ")}
             </p>
+            {providers.results?.IN?.flatrate && (
+              <div className="flex items-center rounded-lg mt-4 bg-white now-streaming-container">
+                {providers.results?.IN?.flatrate.map((provider) => (
+                  <img
+                    src={`https://image.tmdb.org/t/p/original${provider.logo_path}`}
+                    key={provider.provider_id}
+                    alt=""
+                    className="w-16 h-16 object-contain m-2 border  border-red-600 "
+                  />
+                ))}
+                <div className="flex flex-col items-center ml-5">
+                  <p className="text-gray-500 font-ptsans text-3xl">
+                    Now Streaming
+                  </p>
+                  <p className="text-black font-rob font-medium text-lg">
+                    Watch Now
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
