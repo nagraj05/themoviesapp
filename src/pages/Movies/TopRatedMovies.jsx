@@ -42,7 +42,7 @@ export default function TopRatedMovies() {
   return (
     <div>
       <Navbar />
-      <p className="text-white flex justify-center text-4xl font-nunito mt-5">Top-Rated Movies</p>
+      <p className="text-white flex justify-center text-4xl font-ptsans mt-5">Top-Rated Movies</p>
       <div className="flex m-5 justify-center">
         <ArrowBackIosIcon
           onClick={subtract}

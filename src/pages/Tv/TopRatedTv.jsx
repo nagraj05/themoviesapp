@@ -35,7 +35,7 @@ function TopRatedTv() {
   return (
     <div>
       <Navbar />
-      <p className="text-white flex justify-center text-4xl font-nunito mt-5">Top-Rated Shows</p>
+      <p className="text-white flex justify-center text-4xl font-ptsans mt-5">Top-Rated Shows</p>
       <div className="flex m-5 justify-center items-center">
         <ArrowBackIosIcon
           onClick={subtract}
