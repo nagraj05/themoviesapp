@@ -1,5 +1,4 @@
 import Navbar from "../components/Navbar";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -36,18 +35,20 @@ export default function People() {
   return (
     <div>
       <Navbar />
-      <div className="flex m-5 justify-center items-center">
-        <ArrowBackIosIcon
-          onClick={subtract}
-          className="text-white cursor-pointer rounded-md  bg-nav p-2"
-          style={{ fontSize: "32px" }}
-        />
-        <h1 className="text-white mx-2 text-lg font-rob">{count}</h1>
-        <ArrowForwardIosIcon
-          onClick={add}
-          className="text-white cursor-pointer rounded-md bg-nav p-2"
-          style={{ fontSize: "32px" }}
-        />
+      <div className="flex justify-end mr-16">
+        <div className="flex m-5 justify-center items-center gap-3">
+          <ArrowForwardIosIcon
+            onClick={subtract}
+            className="text-white cursor-pointer bg-nav  p-2"
+            style={{ fontSize: "32px", transform: "rotate(180deg)" }}
+          />
+          <h1 className="text-white">{count}</h1>
+          <ArrowForwardIosIcon
+            onClick={add}
+            className="text-white cursor-pointer bg-nav p-2"
+            style={{ fontSize: "32px" }}
+          />
+        </div>
       </div>
       <div className="flex flex-wrap justify-center items-center">
         {people.map((person) => (

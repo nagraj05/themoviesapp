@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer";
 import ButtonToTop from "../../components/ButtonToTop";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 function TopRatedTv() {
@@ -36,18 +35,20 @@ function TopRatedTv() {
     <div>
       <Navbar />
       <p className="text-white flex justify-center text-4xl font-ptsans mt-5">Top-Rated Shows</p>
-      <div className="flex m-5 justify-center items-center">
-        <ArrowBackIosIcon
-          onClick={subtract}
-          className="text-white cursor-pointer rounded-md  bg-nav p-2"
-          style={{ fontSize: "32px" }}
-        />
-        <h1 className="text-white mx-2 text-lg font-rob">{count}</h1>
-        <ArrowForwardIosIcon
-          onClick={add}
-          className="text-white cursor-pointer rounded-md bg-nav p-2"
-          style={{ fontSize: "32px" }}
-        />
+      <div className="flex justify-end mr-28">
+        <div className="flex m-5 justify-center items-center gap-3">
+          <ArrowForwardIosIcon
+            onClick={subtract}
+            className="text-white cursor-pointer bg-nav  p-2"
+            style={{ fontSize: "32px", transform: "rotate(180deg)" }}
+          />
+          <h1 className="text-white">{count}</h1>
+          <ArrowForwardIosIcon
+            onClick={add}
+            className="text-white cursor-pointer bg-nav p-2"
+            style={{ fontSize: "32px" }}
+          />
+        </div>
       </div>
       <div className="flex flex-wrap justify-center items-center">
         {popularShows.map((show) => (

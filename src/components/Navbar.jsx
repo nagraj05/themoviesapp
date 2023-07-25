@@ -131,18 +131,18 @@ export default function Navbar() {
             {showMovieList && (
               <ul
                 ref={movieDropdownRef}
-                className="absolute bg-white text-black rounded-md p-2 space-y-2 mt-1 z-50 w-28"
+                className="absolute bg-white text-black rounded-md z-50 w-32"
               >
-                <li className="hover:text-red-700 border-b border-gray-300">
+                <li className="hover:bg-red-700 p-2 border-b hover:text-white rounded-t-md   border-gray-300">
                   <Link to="/movie/now-playing">Now Playing</Link>
                 </li>
-                <li className="hover:text-red-700 border-b border-gray-300">
+                <li className="hover:bg-red-700 p-2 border-b hover:text-white  border-gray-300">
                   <Link to="/movie/popular-movies">Popular</Link>
                 </li>
-                <li className="hover:text-red-700 border-b border-gray-300">
+                <li className="hover:bg-red-700 p-2 border-b hover:text-white  border-gray-300">
                   <Link to="/movie/top-rated">Top Rated</Link>
                 </li>
-                <li className="hover:text-red-700 border-b border-gray-300">
+                <li className="hover:bg-red-700 p-2 rounded-b-md hover:text-white  border-gray-300">
                   <Link to="/movie/upcoming-movies">Upcoming</Link>
                 </li>
               </ul>
@@ -153,18 +153,18 @@ export default function Navbar() {
             {showTvlist && (
               <ul
                 ref={tvDropdownRef}
-                className="absolute bg-white text-black rounded-md p-2 space-y-2 mt-1 z-50 w-28"
+                className="absolute bg-white text-black rounded-md z-50 w-28"
               >
-                <li className="hover:text-red-700 border-b border-gray-300">
+                <li className="hover:bg-red-700 p-2 border-b hover:text-white rounded-t-md border-gray-300">
                   <Link to="/tv/top-rated">Top Rated</Link>
                 </li>
-                <li className="hover:text-red-700 border-b border-gray-300">
+                <li className="hover:bg-red-700 p-2 border-b hover:text-white border-gray-300">
                   <Link to="/tv/popular">Popular</Link>
                 </li>
-                <li className="hover:text-red-700 border-b border-gray-300">
+                <li className="hover:bg-red-700 p-2 border-b hover:text-white border-gray-300">
                   <Link to="/tv/on-the-air">On the Air</Link>
                 </li>
-                <li className="hover:text-red-700 border-b border-gray-300">
+                <li className="hover:bg-red-700 p-2 border-b hover:text-white rounded-b-md border-gray-300">
                   <Link to="/tv/airing-today">Airing Today</Link>
                 </li>
               </ul>

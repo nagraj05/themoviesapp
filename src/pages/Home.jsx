@@ -2,6 +2,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { useRef } from "react";
 
 export default function Home() {
   const [topRatedMovies, setTopRatedMovies] = useState([]);
@@ -439,17 +441,74 @@ export default function Home() {
 
   const baseUrl = "https://image.tmdb.org/t/p/w500";
 
+  const peopleContainerRef = useRef(null);
+  const trendingMoviesContainerRef = useRef(null);
+  const trendingTvContainerRef = useRef(null);
+  const topRatedMoviesContainerRef = useRef(null);
+  const topRatedTvShowsContainerRef = useRef(null);
+  const actionMoviesContainerRef = useRef(null);
+  const adventureMoviesContainerRef = useRef(null);
+  const animatedMoviesContainerRef = useRef(null);
+  const comedyMoviesContainerRef = useRef(null);
+  const crimeMoviesContainerRef = useRef(null);
+  const documentaryMoviesContainerRef = useRef(null);
+  const dramaMoviesContainerRef = useRef(null);
+  const familyMoviesContainerRef = useRef(null);
+  const fantasyMoviesContainerRef = useRef(null);
+  const historyMoviesContainerRef = useRef(null);
+  const horrorMoviesContainerRef = useRef(null);
+  const musicalMoviesContainerRef = useRef(null);
+  const mysteryMoviesContainerRef = useRef(null);
+  const romanceMoviesContainerRef = useRef(null);
+  const scifiMoviesContainerRef = useRef(null);
+  const thrillerMoviesContainerRef = useRef(null);
+  const warMoviesContainerRef = useRef(null);
+  const westernMoviesContainerRef = useRef(null);
+  const popularTvShowsContainerRef = useRef(null);
+
+  const handleArrowClick = (containerRef, direction) => {
+    const container = containerRef.current;
+    const scrollDistance = 700;
+    const scrollDirection = direction === "left" ? -1 : 1;
+
+    container.scrollBy({
+      left: scrollDirection * scrollDistance,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div>
       <Navbar />
       <div className="flex">
         <div className="flex flex-col overflow-hidden">
-          {/*Trending*/}
+          {/*Trending Movies*/}
           <div className="p-6">
-            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Trending Movies
-            </h3>
-            <div className="flex overflow-x-scroll  scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+            <div className="flex items-center justify-between">
+              <h3 className="text-white text-2xl font-nunito mx-2">
+                Trending Movies
+              </h3>
+              <div className="flex  justify-end gap-1 items-center">
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer bg-nav p-2"
+                  style={{ fontSize: "32px", transform: "rotate(180deg)" }}
+                  onClick={() =>
+                    handleArrowClick(trendingMoviesContainerRef, "left")
+                  }
+                />
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer bg-nav p-2"
+                  style={{ fontSize: "32px" }}
+                  onClick={() =>
+                    handleArrowClick(trendingMoviesContainerRef, "right")
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className="flex overflow-x-scroll  scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl"
+              ref={trendingMoviesContainerRef}
+            >
               {trendingMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
                   <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
@@ -465,10 +524,31 @@ export default function Home() {
           </div>
           {/*Trending Tv*/}
           <div className="p-6">
-            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Trending Shows
-            </h3>
-            <div className="flex overflow-x-scroll  scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+            <div className="flex items-center justify-between">
+              <h3 className="text-white text-2xl font-nunito mx-2">
+                Trending Shows
+              </h3>
+              <div className="flex  justify-end gap-1 items-center">
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer  bg-nav p-2"
+                  style={{ fontSize: "32px", transform: "rotate(180deg)" }}
+                  onClick={() =>
+                    handleArrowClick(trendingTvContainerRef, "left")
+                  }
+                />
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer bg-nav p-2"
+                  style={{ fontSize: "32px" }}
+                  onClick={() =>
+                    handleArrowClick(trendingTvContainerRef, "right")
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className="flex overflow-x-scroll  scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl"
+              ref={trendingTvContainerRef}
+            >
               {trendingTv.map((movie) => (
                 <Link key={movie.id} to={`/tv/${movie.id}`}>
                   <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
@@ -484,10 +564,27 @@ export default function Home() {
           </div>
           {/*Trending People*/}
           <div className="p-6">
-            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Trending on Google
-            </h3>
-            <div className="flex overflow-x-scroll  scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+            <div className="flex items-center justify-between">
+              <h3 className="text-white text-2xl font-nunito mx-2">
+                Trending on Google
+              </h3>
+              <div className="flex  justify-end gap-1 items-center">
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer  bg-nav p-2"
+                  style={{ fontSize: "32px", transform: "rotate(180deg)" }}
+                  onClick={() => handleArrowClick(peopleContainerRef, "left")}
+                />
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer bg-nav p-2"
+                  style={{ fontSize: "32px" }}
+                  onClick={() => handleArrowClick(peopleContainerRef, "right")}
+                />
+              </div>
+            </div>
+            <div
+              className="flex overflow-x-scroll  scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl"
+              ref={peopleContainerRef}
+            >
               {trendingPeople.map((movie) => (
                 <Link key={movie.id} to={`/people/${movie.id}`}>
                   <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
@@ -506,10 +603,31 @@ export default function Home() {
           </div>
           {/* Top Rated Movies */}
           <div className="flex flex-col p-4 ">
-            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Top Rated Movies
-            </h3>
-            <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+            <div className="flex items-center justify-between">
+              <h3 className="text-white text-2xl font-nunito mx-2">
+                Top Rated Movies
+              </h3>
+              <div className="flex  justify-end gap-1 items-center">
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer bg-nav p-2"
+                  style={{ fontSize: "32px", transform: "rotate(180deg)" }}
+                  onClick={() =>
+                    handleArrowClick(topRatedMoviesContainerRef, "left")
+                  }
+                />
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer bg-nav p-2"
+                  style={{ fontSize: "32px" }}
+                  onClick={() =>
+                    handleArrowClick(topRatedMoviesContainerRef, "right")
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl"
+              ref={topRatedMoviesContainerRef}
+            >
               {topRatedMovies &&
                 topRatedMovies.map((movie) => (
                   <Link key={movie.id} to={`/movie/${movie.id}`}>
@@ -526,10 +644,31 @@ export default function Home() {
           </div>
           {/*Top Rated Tv Shows*/}
           <div className="flex flex-col p-4 ">
-            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Top Rated Tv Shows
-            </h3>
-            <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+            <div className="flex items-center justify-between">
+              <h3 className="text-white text-2xl font-nunito mx-2">
+                Top Rated Tv Shows
+              </h3>
+              <div className="flex  justify-end gap-1 items-center">
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer  bg-nav p-2"
+                  style={{ fontSize: "32px", transform: "rotate(180deg)" }}
+                  onClick={() =>
+                    handleArrowClick(topRatedTvShowsContainerRef, "left")
+                  }
+                />
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer bg-nav p-2"
+                  style={{ fontSize: "32px" }}
+                  onClick={() =>
+                    handleArrowClick(topRatedTvShowsContainerRef, "right")
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl"
+              ref={topRatedTvShowsContainerRef}
+            >
               {topRatedTv.map((movie) => (
                 <Link key={movie.id} to={`/tv/${movie.id}`}>
                   <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
@@ -545,10 +684,31 @@ export default function Home() {
           </div>
           {/* Action Movies */}
           <div className="flex flex-col p-4 ">
-            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Full on Action Movies
-            </h3>
-            <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+            <div className="flex items-center justify-between">
+              <h3 className="text-white text-2xl font-nunito mx-2">
+                Full on Action Movies
+              </h3>
+              <div className="flex  justify-end gap-1 items-center">
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer  bg-nav p-2"
+                  style={{ fontSize: "32px", transform: "rotate(180deg)" }}
+                  onClick={() =>
+                    handleArrowClick(actionMoviesContainerRef, "left")
+                  }
+                />
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer bg-nav p-2"
+                  style={{ fontSize: "32px" }}
+                  onClick={() =>
+                    handleArrowClick(actionMoviesContainerRef, "right")
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl"
+              ref={actionMoviesContainerRef}
+            >
               {actionMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
                   <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
@@ -564,10 +724,31 @@ export default function Home() {
           </div>
           {/* Adventure Movies */}
           <div className="flex flex-col p-4 ">
-            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Adventure Movies
-            </h3>
-            <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+            <div className="flex items-center justify-between">
+              <h3 className="text-white text-2xl font-nunito mx-2">
+                Adventure Movies
+              </h3>
+              <div className="flex  justify-end gap-1 items-center">
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer  bg-nav p-2"
+                  style={{ fontSize: "32px", transform: "rotate(180deg)" }}
+                  onClick={() =>
+                    handleArrowClick(adventureMoviesContainerRef, "left")
+                  }
+                />
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer bg-nav p-2"
+                  style={{ fontSize: "32px" }}
+                  onClick={() =>
+                    handleArrowClick(adventureMoviesContainerRef, "right")
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl"
+              ref={adventureMoviesContainerRef}
+            >
               {adventureMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
                   <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
@@ -583,10 +764,31 @@ export default function Home() {
           </div>
           {/* Animated Movies */}
           <div className="flex flex-col p-4 ">
-            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Animated Movies
-            </h3>
-            <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+            <div className="flex items-center justify-between">
+              <h3 className="text-white text-2xl font-nunito mx-2">
+                Animated Movies
+              </h3>
+              <div className="flex  justify-end gap-1 items-center">
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer  bg-nav p-2"
+                  style={{ fontSize: "32px", transform: "rotate(180deg)" }}
+                  onClick={() =>
+                    handleArrowClick(animatedMoviesContainerRef, "left")
+                  }
+                />
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer bg-nav p-2"
+                  style={{ fontSize: "32px" }}
+                  onClick={() =>
+                    handleArrowClick(animatedMoviesContainerRef, "right")
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl"
+              ref={animatedMoviesContainerRef}
+            >
               {animatedMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
                   <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
@@ -602,10 +804,31 @@ export default function Home() {
           </div>
           {/* Comedy Movies */}
           <div className="flex flex-col p-4 ">
-            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Only Laughs
-            </h3>
-            <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+            <div className="flex items-center justify-between">
+              <h3 className="text-white text-2xl font-nunito mx-2">
+                Only Laughs
+              </h3>
+              <div className="flex  justify-end gap-1 items-center">
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer  bg-nav p-2"
+                  style={{ fontSize: "32px", transform: "rotate(180deg)" }}
+                  onClick={() =>
+                    handleArrowClick(comedyMoviesContainerRef, "left")
+                  }
+                />
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer bg-nav p-2"
+                  style={{ fontSize: "32px" }}
+                  onClick={() =>
+                    handleArrowClick(comedyMoviesContainerRef, "right")
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl"
+              ref={comedyMoviesContainerRef}
+            >
               {comedyMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
                   <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
@@ -621,10 +844,31 @@ export default function Home() {
           </div>
           {/* Crime Movies */}
           <div className="flex flex-col p-4 ">
-            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Criminal with Style
-            </h3>
-            <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+            <div className="flex items-center justify-between">
+              <h3 className="text-white text-2xl font-nunito mx-2">
+                Criminal with style
+              </h3>
+              <div className="flex  justify-end gap-1 items-center">
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer  bg-nav p-2"
+                  style={{ fontSize: "32px", transform: "rotate(180deg)" }}
+                  onClick={() =>
+                    handleArrowClick(crimeMoviesContainerRef, "left")
+                  }
+                />
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer bg-nav p-2"
+                  style={{ fontSize: "32px" }}
+                  onClick={() =>
+                    handleArrowClick(crimeMoviesContainerRef, "right")
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl"
+              ref={crimeMoviesContainerRef}
+            >
               {crimeMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
                   <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
@@ -640,10 +884,31 @@ export default function Home() {
           </div>
           {/* Documentary Movies */}
           <div className="flex flex-col p-4 ">
-            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Documentaries
-            </h3>
-            <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+            <div className="flex items-center justify-between">
+              <h3 className="text-white text-2xl font-nunito mx-2">
+                Documentaries
+              </h3>
+              <div className="flex  justify-end gap-1 items-center">
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer  bg-nav p-2"
+                  style={{ fontSize: "32px", transform: "rotate(180deg)" }}
+                  onClick={() =>
+                    handleArrowClick(documentaryMoviesContainerRef, "left")
+                  }
+                />
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer bg-nav p-2"
+                  style={{ fontSize: "32px" }}
+                  onClick={() =>
+                    handleArrowClick(documentaryMoviesContainerRef, "right")
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl"
+              ref={documentaryMoviesContainerRef}
+            >
               {documentaryMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
                   <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
@@ -659,10 +924,31 @@ export default function Home() {
           </div>
           {/* Drama Movies */}
           <div className="flex flex-col p-4 ">
-            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Drama Movies
-            </h3>
-            <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+            <div className="flex items-center justify-between">
+              <h3 className="text-white text-2xl font-nunito mx-2">
+                Drama Movies
+              </h3>
+              <div className="flex  justify-end gap-1 items-center">
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer  bg-nav p-2"
+                  style={{ fontSize: "32px", transform: "rotate(180deg)" }}
+                  onClick={() =>
+                    handleArrowClick(dramaMoviesContainerRef, "left")
+                  }
+                />
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer bg-nav p-2"
+                  style={{ fontSize: "32px" }}
+                  onClick={() =>
+                    handleArrowClick(dramaMoviesContainerRef, "right")
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl"
+              ref={dramaMoviesContainerRef}
+            >
               {dramaMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
                   <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
@@ -678,10 +964,31 @@ export default function Home() {
           </div>
           {/* Family Movies */}
           <div className="flex flex-col p-4 ">
-            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              You Can Watch With Your Family
-            </h3>
-            <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+            <div className="flex items-center justify-between">
+              <h3 className="text-white text-2xl font-nunito mx-2">
+                You Can Watch With Your Family
+              </h3>
+              <div className="flex  justify-end gap-1 items-center">
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer  bg-nav p-2"
+                  style={{ fontSize: "32px", transform: "rotate(180deg)" }}
+                  onClick={() =>
+                    handleArrowClick(familyMoviesContainerRef, "left")
+                  }
+                />
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer bg-nav p-2"
+                  style={{ fontSize: "32px" }}
+                  onClick={() =>
+                    handleArrowClick(familyMoviesContainerRef, "right")
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl"
+              ref={familyMoviesContainerRef}
+            >
               {familyMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
                   <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
@@ -697,10 +1004,31 @@ export default function Home() {
           </div>
           {/* Fantasy Movies */}
           <div className="flex flex-col p-4 ">
-            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Yo! Fantasies here.
-            </h3>
-            <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+            <div className="flex items-center justify-between">
+              <h3 className="text-white text-2xl font-nunito mx-2">
+                Yo! Fantasies Here
+              </h3>
+              <div className="flex  justify-end gap-1 items-center">
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer  bg-nav p-2"
+                  style={{ fontSize: "32px", transform: "rotate(180deg)" }}
+                  onClick={() =>
+                    handleArrowClick(fantasyMoviesContainerRef, "left")
+                  }
+                />
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer bg-nav p-2"
+                  style={{ fontSize: "32px" }}
+                  onClick={() =>
+                    handleArrowClick(fantasyMoviesContainerRef, "right")
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl"
+              ref={fantasyMoviesContainerRef}
+            >
               {fantasyMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
                   <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
@@ -716,10 +1044,31 @@ export default function Home() {
           </div>
           {/* History Movies */}
           <div className="flex flex-col p-4 ">
-            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Watch Little History Here
-            </h3>
-            <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+            <div className="flex items-center justify-between">
+              <h3 className="text-white text-2xl font-nunito mx-2">
+                Watch Little History Here
+              </h3>
+              <div className="flex  justify-end gap-1 items-center">
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer  bg-nav p-2"
+                  style={{ fontSize: "32px", transform: "rotate(180deg)" }}
+                  onClick={() =>
+                    handleArrowClick(historyMoviesContainerRef, "left")
+                  }
+                />
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer bg-nav p-2"
+                  style={{ fontSize: "32px" }}
+                  onClick={() =>
+                    handleArrowClick(historyMoviesContainerRef, "right")
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl"
+              ref={historyMoviesContainerRef}
+            >
               {historyMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
                   <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
@@ -735,10 +1084,31 @@ export default function Home() {
           </div>
           {/* Horror Movies */}
           <div className="flex flex-col p-4 ">
-            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Are You Scared?
-            </h3>
-            <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+            <div className="flex items-center justify-between">
+              <h3 className="text-white text-2xl font-nunito mx-2">
+                Are you scared?
+              </h3>
+              <div className="flex  justify-end gap-1 items-center">
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer  bg-nav p-2"
+                  style={{ fontSize: "32px", transform: "rotate(180deg)" }}
+                  onClick={() =>
+                    handleArrowClick(horrorMoviesContainerRef, "left")
+                  }
+                />
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer bg-nav p-2"
+                  style={{ fontSize: "32px" }}
+                  onClick={() =>
+                    handleArrowClick(horrorMoviesContainerRef, "right")
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl"
+              ref={horrorMoviesContainerRef}
+            >
               {horrorMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
                   <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
@@ -754,10 +1124,31 @@ export default function Home() {
           </div>
           {/* Music Movies */}
           <div className="flex flex-col p-4 ">
-            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Musicals for Life
-            </h3>
-            <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+            <div className="flex items-center justify-between">
+              <h3 className="text-white text-2xl font-nunito mx-2">
+                Musicals for Life
+              </h3>
+              <div className="flex  justify-end gap-1 items-center">
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer  bg-nav p-2"
+                  style={{ fontSize: "32px", transform: "rotate(180deg)" }}
+                  onClick={() =>
+                    handleArrowClick(musicalMoviesContainerRef, "left")
+                  }
+                />
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer bg-nav p-2"
+                  style={{ fontSize: "32px" }}
+                  onClick={() =>
+                    handleArrowClick(musicalMoviesContainerRef, "right")
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl"
+              ref={musicalMoviesContainerRef}
+            >
               {musicMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
                   <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
@@ -773,10 +1164,31 @@ export default function Home() {
           </div>
           {/* Mystery Movies */}
           <div className="flex flex-col p-4 ">
-            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Ooh What A Mystery!
-            </h3>
-            <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+            <div className="flex items-center justify-between">
+              <h3 className="text-white text-2xl font-nunito mx-2">
+                Ooh What A Mystery!
+              </h3>
+              <div className="flex  justify-end gap-1 items-center">
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer  bg-nav p-2"
+                  style={{ fontSize: "32px", transform: "rotate(180deg)" }}
+                  onClick={() =>
+                    handleArrowClick(mysteryMoviesContainerRef, "left")
+                  }
+                />
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer bg-nav p-2"
+                  style={{ fontSize: "32px" }}
+                  onClick={() =>
+                    handleArrowClick(mysteryMoviesContainerRef, "right")
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl"
+              ref={mysteryMoviesContainerRef}
+            >
               {mysteryMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
                   <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
@@ -792,10 +1204,31 @@ export default function Home() {
           </div>
           {/* Romance Movies */}
           <div className="flex flex-col p-4 ">
-            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Aww Love these
-            </h3>
-            <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+            <div className="flex items-center justify-between">
+              <h3 className="text-white text-2xl font-nunito mx-2">
+                Aww Love these Romance Movies
+              </h3>
+              <div className="flex  justify-end gap-1 items-center">
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer  bg-nav p-2"
+                  style={{ fontSize: "32px", transform: "rotate(180deg)" }}
+                  onClick={() =>
+                    handleArrowClick(romanceMoviesContainerRef, "left")
+                  }
+                />
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer bg-nav p-2"
+                  style={{ fontSize: "32px" }}
+                  onClick={() =>
+                    handleArrowClick(romanceMoviesContainerRef, "right")
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl"
+              ref={romanceMoviesContainerRef}
+            >
               {romanceMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
                   <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
@@ -811,10 +1244,31 @@ export default function Home() {
           </div>
           {/* Scifi Movies */}
           <div className="flex flex-col p-4 ">
-            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Binge Worthy Sci-Fi Movies
-            </h3>
-            <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+            <div className="flex items-center justify-between">
+              <h3 className="text-white text-2xl font-nunito mx-2">
+                Binge Worthy SciFi Movies
+              </h3>
+              <div className="flex  justify-end gap-1 items-center">
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer  bg-nav p-2"
+                  style={{ fontSize: "32px", transform: "rotate(180deg)" }}
+                  onClick={() =>
+                    handleArrowClick(scifiMoviesContainerRef, "left")
+                  }
+                />
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer bg-nav p-2"
+                  style={{ fontSize: "32px" }}
+                  onClick={() =>
+                    handleArrowClick(scifiMoviesContainerRef, "right")
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl"
+              ref={scifiMoviesContainerRef}
+            >
               {scifiMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
                   <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
@@ -830,10 +1284,31 @@ export default function Home() {
           </div>
           {/* Thriller Movies */}
           <div className="flex flex-col p-4 ">
-            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Yay! Thrillers
-            </h3>
-            <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+            <div className="flex items-center justify-between">
+              <h3 className="text-white text-2xl font-nunito mx-2">
+                Yay Thrillers!
+              </h3>
+              <div className="flex  justify-end gap-1 items-center">
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer  bg-nav p-2"
+                  style={{ fontSize: "32px", transform: "rotate(180deg)" }}
+                  onClick={() =>
+                    handleArrowClick(thrillerMoviesContainerRef, "left")
+                  }
+                />
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer bg-nav p-2"
+                  style={{ fontSize: "32px" }}
+                  onClick={() =>
+                    handleArrowClick(thrillerMoviesContainerRef, "right")
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl"
+              ref={thrillerMoviesContainerRef}
+            >
               {thrillerMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
                   <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
@@ -849,10 +1324,31 @@ export default function Home() {
           </div>
           {/* War Movies */}
           <div className="flex flex-col p-4 ">
-            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              War Movies
-            </h3>
-            <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+            <div className="flex items-center justify-between">
+              <h3 className="text-white text-2xl font-nunito mx-2">
+                War Movies
+              </h3>
+              <div className="flex  justify-end gap-1 items-center">
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer  bg-nav p-2"
+                  style={{ fontSize: "32px", transform: "rotate(180deg)" }}
+                  onClick={() =>
+                    handleArrowClick(warMoviesContainerRef, "left")
+                  }
+                />
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer bg-nav p-2"
+                  style={{ fontSize: "32px" }}
+                  onClick={() =>
+                    handleArrowClick(warMoviesContainerRef, "right")
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl"
+              ref={warMoviesContainerRef}
+            >
               {warMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
                   <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
@@ -868,10 +1364,31 @@ export default function Home() {
           </div>
           {/* Western Movies */}
           <div className="flex flex-col p-4 ">
-            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Western Movies
-            </h3>
-            <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+            <div className="flex items-center justify-between">
+              <h3 className="text-white text-2xl font-nunito mx-2">
+                Western Movies
+              </h3>
+              <div className="flex  justify-end gap-1 items-center">
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer  bg-nav p-2"
+                  style={{ fontSize: "32px", transform: "rotate(180deg)" }}
+                  onClick={() =>
+                    handleArrowClick(westernMoviesContainerRef, "left")
+                  }
+                />
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer bg-nav p-2"
+                  style={{ fontSize: "32px" }}
+                  onClick={() =>
+                    handleArrowClick(westernMoviesContainerRef, "right")
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl"
+              ref={westernMoviesContainerRef}
+            >
               {westernMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
                   <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
@@ -887,10 +1404,31 @@ export default function Home() {
           </div>
           {/*Popular Tv Shows */}
           <div className="flex flex-col p-4 ">
-            <h3 className="text-white text-2xl font-nunito mx-2 mt-5">
-              Popular Tv Shows
-            </h3>
-            <div className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl">
+            <div className="flex items-center justify-between">
+              <h3 className="text-white text-2xl font-nunito mx-2">
+                Popular Tv Shows
+              </h3>
+              <div className="flex  justify-end gap-1 items-center">
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer  bg-nav p-2"
+                  style={{ fontSize: "32px", transform: "rotate(180deg)" }}
+                  onClick={() =>
+                    handleArrowClick(popularTvShowsContainerRef, "left")
+                  }
+                />
+                <ArrowForwardIosIcon
+                  className="text-white cursor-pointer bg-nav p-2"
+                  style={{ fontSize: "32px" }}
+                  onClick={() =>
+                    handleArrowClick(popularTvShowsContainerRef, "right")
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className="flex overflow-x-scroll scrollbar scrollbar-track-slate-800 scrollbar-track-rounded-2xl scrollbar-thumb-slate-700 scrollbar-thumb-rounded-2xl"
+              ref={popularTvShowsContainerRef}
+            >
               {popularShows.map((movie) => (
                 <Link key={movie.id} to={`/tv/${movie.id}`}>
                   <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">

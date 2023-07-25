@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer";
 import ButtonToTop from "../../components/ButtonToTop";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 export default function TopRatedMovies() {
@@ -42,19 +41,23 @@ export default function TopRatedMovies() {
   return (
     <div>
       <Navbar />
-      <p className="text-white flex justify-center text-4xl font-ptsans mt-5">Top-Rated Movies</p>
-      <div className="flex m-5 justify-center">
-        <ArrowBackIosIcon
-          onClick={subtract}
-          className="text-white cursor-pointer rounded-md bg-nav p-2"
-          style={{ fontSize: "32px" }}
-        />
-        <h1 className="text-white">{count}</h1>
-        <ArrowForwardIosIcon
-          onClick={add}
-          className="text-white cursor-pointer bg-nav p-2"
-          style={{ fontSize: "32px" }}
-        />
+      <p className="text-white flex justify-center text-4xl font-ptsans mt-5">
+        Top-Rated Movies
+      </p>
+      <div className="flex justify-end mr-28">
+        <div className="flex m-5 justify-center items-center gap-3">
+          <ArrowForwardIosIcon
+            onClick={subtract}
+            className="text-white cursor-pointer bg-nav  p-2"
+            style={{ fontSize: "32px", transform: "rotate(180deg)" }}
+          />
+          <h1 className="text-white">{count}</h1>
+          <ArrowForwardIosIcon
+            onClick={add}
+            className="text-white cursor-pointer bg-nav p-2"
+            style={{ fontSize: "32px" }}
+          />
+        </div>
       </div>
       <div className="flex flex-wrap justify-center items-center">
         {movies.map((movie) => (
@@ -69,7 +72,9 @@ export default function TopRatedMovies() {
                 <h4 className="text-white font-nunito  m-2">
                   {truncateTitle(movie.original_title, 28)}
                 </h4>
-                <p className="text-white font-nunito  m-2">Rating : {movie.vote_average}/10</p>
+                <p className="text-white font-nunito  m-2">
+                  Rating : {movie.vote_average}/10
+                </p>
               </div>
             </div>
           </Link>
