@@ -221,7 +221,7 @@ export default function TvDetails() {
                     <p className="text-white text-lg font-ptsans">
                       {person.name}
                     </p>
-                    <p className="text-gray-400 font-ptsans py-1">
+                    <p className="text-gray-400 font-ptsans py-1 text-center">
                       {person.character}
                     </p>
                   </Link>
