@@ -45,7 +45,7 @@ export default function Footer() {
         </a>
       </div>
       <div className="text-white font-mono">
-        This website is created by Nagraj Tadingi
+         Created by Nagraj Tadingi
       </div>
     </div>
   );

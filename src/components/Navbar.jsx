@@ -3,6 +3,7 @@ import { useState } from "react";
 import logo from "../assets/title.png";
 import { useRef } from "react";
 import { useEffect } from "react";
+import SearchIcon from "@mui/icons-material/Search";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -119,65 +120,64 @@ export default function Navbar() {
         )}
       </div>
       <div className="hidden lg:block">
-        <ul className="flex justify-between space-x-9 mx-4 px-20 text-white font-rob font-semibold cursor-pointer items-center">
-          <li className="hover:text-red-700">
+        <ul className="flex justify-between space-x-9 mx-4 px-20 text-gray-500 font-rob font-semibold cursor-pointer items-center">
+          <li className="hover:text-white">
             <Link to="/">HOME</Link>
           </li>
-          <li
-            className="hover:text-red-700 relative"
-            onClick={handleMovieClick}
-          >
+          <li className="hover:text-white relative" onClick={handleMovieClick}>
             <span>MOVIES</span>
             {showMovieList && (
               <ul
                 ref={movieDropdownRef}
-                className="absolute bg-white text-black rounded-md z-50 w-32"
+                className="absolute bg-gray-500 text-black rounded-md z-50 w-32"
               >
-                <li className="hover:bg-red-700 p-2 border-b hover:text-white rounded-t-md   border-gray-300">
+                <li className="hover:bg-nav p-2 border-b hover:text-white rounded-t-md   border-gray-600">
                   <Link to="/movie/now-playing">Now Playing</Link>
                 </li>
-                <li className="hover:bg-red-700 p-2 border-b hover:text-white  border-gray-300">
+                <li className="hover:bg-nav p-2 border-b hover:text-white  border-gray-600">
                   <Link to="/movie/popular-movies">Popular</Link>
                 </li>
-                <li className="hover:bg-red-700 p-2 border-b hover:text-white  border-gray-300">
+                <li className="hover:bg-nav p-2 border-b hover:text-white  border-gray-600">
                   <Link to="/movie/top-rated">Top Rated</Link>
                 </li>
-                <li className="hover:bg-red-700 p-2 rounded-b-md hover:text-white  border-gray-300">
+                <li className="hover:bg-nav p-2 rounded-b-md hover:text-white  border-gray-600">
                   <Link to="/movie/upcoming-movies">Upcoming</Link>
                 </li>
               </ul>
             )}
           </li>
-          <li className="hover:text-red-700 relative" onClick={handleTvClick}>
+          <li className="hover:text-white relative" onClick={handleTvClick}>
             <span>TV SHOWS</span>
             {showTvlist && (
               <ul
                 ref={tvDropdownRef}
-                className="absolute bg-white text-black rounded-md z-50 w-28"
+                className="absolute bg-gray-500 text-black rounded-md z-50 w-32"
               >
-                <li className="hover:bg-red-700 p-2 border-b hover:text-white rounded-t-md border-gray-300">
+                <li className="hover:bg-nav p-2 border-b hover:text-white rounded-t-md border-gray-600">
                   <Link to="/tv/top-rated">Top Rated</Link>
                 </li>
-                <li className="hover:bg-red-700 p-2 border-b hover:text-white border-gray-300">
+                <li className="hover:bg-nav p-2 border-b hover:text-white border-gray-600">
                   <Link to="/tv/popular">Popular</Link>
                 </li>
-                <li className="hover:bg-red-700 p-2 border-b hover:text-white border-gray-300">
+                <li className="hover:bg-nav p-2 border-b hover:text-white border-gray-600">
                   <Link to="/tv/on-the-air">On the Air</Link>
                 </li>
-                <li className="hover:bg-red-700 p-2 border-b hover:text-white rounded-b-md border-gray-300">
+                <li className="hover:bg-nav p-2 border-b hover:text-white rounded-b-md border-gray-600">
                   <Link to="/tv/airing-today">Airing Today</Link>
                 </li>
               </ul>
             )}
           </li>
-          <li className="hover:text-red-700">
-            <Link to="/lists">LISTS</Link>
-          </li>
-          <li className="hover:text-red-700">
+          <li className="hover:text-white">
             <Link to="/people">PEOPLE</Link>
           </li>
-          <li className="hover:text-red-700">
-            <Link to="/search">SEARCH</Link>
+          <li className="hover:text-white">
+            <Link to="/lists">ABOUT</Link>
+          </li>
+          <li className="hover:text-white">
+            <Link to="/search">
+              <SearchIcon style={{ verticalAlign: "middle" }} />
+            </Link>
           </li>
         </ul>
       </div>
