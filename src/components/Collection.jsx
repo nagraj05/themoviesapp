@@ -16,13 +16,6 @@ export default function Collection() {
   useEffect(() => {
     fetch(`https://api.themoviedb.org/3/collection/${id}?api_key=${api_key}`)
       .then((response) => response.json())
-      .then((data) => setCollection(data))
-      .catch((error) => console.log(error));
-  }, [id, api_key]);
-
-  useEffect(() => {
-    fetch(`https://api.themoviedb.org/3/collection/${id}?api_key=${api_key}`)
-      .then((response) => response.json())
       .then((data) => {
         setCollection(data);
         setNumberOfMovies(data.parts.length);
@@ -51,7 +44,9 @@ export default function Collection() {
           <div>
             <h2 className="text-xl font-semibold">{collection.name}</h2>
             <p className="text-gray-500 text-lg mt-5">{collection.overview}</p>
-            <p className="text-gray-500 text-lg mt-5 ">Number of Movies : {numberOfMovies}</p>
+            <p className="text-gray-500 text-lg mt-5 ">
+              Number of Movies : {numberOfMovies}
+            </p>
           </div>
         </div>
       </div>

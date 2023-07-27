@@ -1,7 +1,7 @@
 import Navbar from "../components/Navbar";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import ButtonToTop from "../components/ButtonToTop";
 
@@ -10,6 +10,8 @@ export default function People() {
   const [people, setPeople] = useState([]);
 
   const api_key = import.meta.env.VITE_TMDB_API_KEY;
+
+  const navigate = useNavigate();
 
   function subtract() {
     if (count > 1) {
@@ -28,7 +30,8 @@ export default function People() {
       .then((response) => response.json())
       .then((data) => setPeople(data.results))
       .catch((error) => console.log(error));
-  }, [api_key, count]);
+    navigate(`/people?page=${count}`, { replace: true });
+  }, [api_key, count, navigate]);
 
   const baseUrl = "https://image.tmdb.org/t/p/w500";
 
@@ -52,10 +55,7 @@ export default function People() {
       </div>
       <div className="flex flex-wrap justify-center items-center">
         {people.map((person) => (
-          <Link
-            key={person.id}
-            to={`/people/${person.id}`}
-          >
+          <Link key={person.id} to={`/people/${person.id}`}>
             <div className="w-52 border border-gray-500 mx-5 my-3 ">
               <img
                 src={baseUrl + person.profile_path}

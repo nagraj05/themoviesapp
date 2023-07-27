@@ -232,6 +232,28 @@ export default function TvDetails() {
           </div>
         </div>
       )}
+      {/*Seasons */}
+      <div className="relative h-80 mx-10 my-5">
+        <div className="flex items-center rounded-lg shadow-md bg-white p-4">
+          <img
+            src={baseUrl + details.poster_path}
+            alt=""
+            className="w-36 h-52 rounded-lg object-cover mr-4"
+          />
+          <div className="flex flex-col gap-5">
+            <h2 className="text-black font-pop text-lg">
+              {" "}
+              Number of seasons: {details.number_of_seasons}
+            </h2>
+
+            <Link to={`/tv/seasons/${details.id}`}>
+              <button className="text-white bg-body font-nunito px-6 py-3 rounded-lg">
+                View Seasons
+              </button>
+            </Link>
+          </div>
+        </div>
+      </div>
       {/*Trailers*/}
       {video.length > 0 && (
         <div>
