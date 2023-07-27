@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import ButtonToTop from "./ButtonToTop"
 
 export default function Episodes() {
   const [show, setShow] = useState(null);
@@ -80,6 +81,7 @@ export default function Episodes() {
           </div>
         ))}
       </div>
+      <ButtonToTop />
       <Footer />
     </div>
   );

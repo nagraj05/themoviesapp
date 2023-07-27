@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import ButtonToTop from "./ButtonToTop"
 
 export default function SeasonsDetails() {
   const [seasons, setSeasons] = useState([]);
@@ -67,6 +68,7 @@ export default function SeasonsDetails() {
           </Link>
         ))}
       </div>
+      <ButtonToTop />
       <Footer />
     </div>
   );
