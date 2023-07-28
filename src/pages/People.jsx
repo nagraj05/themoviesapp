@@ -56,11 +56,11 @@ export default function People() {
       <div className="flex flex-wrap justify-center items-center">
         {people.map((person) => (
           <Link key={person.id} to={`/people/${person.id}`}>
-            <div className="w-52 border border-gray-500 mx-5 my-3 ">
+            <div className="w-52 border rounded-md border-gray-500 mx-5 my-3 ">
               <img
                 src={baseUrl + person.profile_path}
                 alt=""
-                className="h-64 w-52"
+                className="h-64 w-52 rounded-t-md"
               />
               <div>
                 <h4 className="text-white font-ptsans  m-2">{person.name}</h4>

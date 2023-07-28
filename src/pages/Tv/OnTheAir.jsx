@@ -28,15 +28,15 @@ function OnTheAir() {
             key={show.id}
             to={`/tv/${show.id}`}
           >
-            <div className="w-60 border border-gray-500 mx-5 my-3 ">
+            <div className="w-60 border border-gray-500 rounded-md mx-5 my-3 ">
               <img
                 src={baseUrl + show.poster_path}
                 alt=""
-                className="h-64 w-60"
+                className="h-64 w-60 rounded-md"
               />
               <div>
                 <h4 className="text-white font-ptsans  m-2">{show.name}</h4>
-                <p className="text-white  m-2">IMDb: {show.vote_average}/10</p>
+                <p className="text-white  m-2">Rating: {show.vote_average}/10</p>
               </div>
             </div>
           </Link>

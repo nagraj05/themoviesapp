@@ -14,7 +14,7 @@ import TvTopRated from "./pages/Tv/TopRatedTv";
 import TvPopular from "./pages/Tv/Popular";
 import TvOnTheAir from "./pages/Tv/OnTheAir";
 import TvAiringToday from "./pages/Tv/AiringToday";
-import Lists from "./pages/Lists";
+import About from "./pages/About";
 import People from "./pages/People";
 import Peopledetails from "./components/Peopledetails";
 import Loader from "./components/Loader";
@@ -60,7 +60,7 @@ function App() {
             <Route path="/tv/airing-today" element={<TvAiringToday />} />
             <Route path="/tv/popular" element={<TvPopular />} />
             <Route path="/tv/on-the-air" element={<TvOnTheAir />} />
-            <Route path="/lists" element={<Lists />} />
+            <Route path="/about" element={<About />} />
             <Route path="/people" element={<People />} />
             <Route path="/people/:id" element={<Peopledetails />} />
             <Route path="/collection/:id" element={<Collection />} />

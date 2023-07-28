@@ -172,7 +172,7 @@ export default function Navbar() {
             <Link to="/people">PEOPLE</Link>
           </li>
           <li className="hover:text-white">
-            <Link to="/lists">ABOUT</Link>
+            <Link to="/about">ABOUT</Link>
           </li>
           <li className="hover:text-white">
             <Link to="/search">

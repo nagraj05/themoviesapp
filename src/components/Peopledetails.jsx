@@ -181,7 +181,7 @@ export default function Peopledetails() {
                     <p className="text-white text-base p-4 font-nunito">
                       {truncateTitle(movie.title, 15)}
                     </p>
-                    <p className="text-gray-400 mb-4 font-nunito">{movie.character}</p>
+                    <p className="text-gray-400 mb-4 font-nunito text-center">{movie.character}</p>
                   </Link>
                 ))}
               </div>
@@ -209,7 +209,7 @@ export default function Peopledetails() {
                     <p className="text-white text-base p-4 font-nunito">
                       {truncateName(movie.name, 15)}
                     </p>
-                    <p className="text-gray-400 mb-4 font-nunito">{movie.character}</p>
+                    <p className="text-gray-400 mb-4 font-nunito text-center">{movie.character}</p>
                   </Link>
                 ))}
               </div>

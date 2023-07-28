@@ -34,7 +34,9 @@ function TopRatedTv() {
   return (
     <div>
       <Navbar />
-      <p className="text-white flex justify-center text-4xl font-ptsans mt-5">Top-Rated Shows</p>
+      <p className="text-white flex justify-center text-4xl font-ptsans mt-5">
+        Top-Rated Shows
+      </p>
       <div className="flex justify-end mr-28">
         <div className="flex m-5 justify-center items-center gap-3">
           <ArrowForwardIosIcon
@@ -53,11 +55,11 @@ function TopRatedTv() {
       <div className="flex flex-wrap justify-center items-center">
         {popularShows.map((show) => (
           <Link key={show.id} to={`/tv/${show.id}`}>
-            <div className="w-60 border border-gray-500 mx-5 my-3 ">
+            <div className="w-60 border border-gray-500 rounded-md mx-5 my-3 ">
               <img
                 src={baseUrl + show.poster_path}
                 alt=""
-                className="h-64 w-60"
+                className="h-64 w-60 rounded-md"
               />
               <div>
                 <h4 className="text-white font-nunito  m-2">{show.name}</h4>

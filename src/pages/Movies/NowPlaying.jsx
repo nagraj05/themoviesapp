@@ -25,11 +25,11 @@ export default function NowPlaying() {
       <div className="flex flex-wrap justify-center items-center">
         {movies.map((movie) => (
           <Link key={movie.id} to={`/movie/${movie.id}`}>
-            <div className="w-60 border border-gray-500 mx-5 my-3 ">
+            <div className="w-60 border rounded-md border-gray-500 mx-5 my-3 ">
               <img
                 src={baseUrl + movie.poster_path}
                 alt=""
-                className="h-64 w-60"
+                className="h-64 w-60 rounded-md"
               />
               <div>
                 <h4 className="text-white font-nunito  m-2">
