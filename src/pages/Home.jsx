@@ -485,7 +485,7 @@ export default function Home() {
           {/*Trending Movies*/}
           <div className="p-6">
             <div className="flex items-center justify-between">
-              <h3 className="text-sm text-white sm:text-white sm:text-2xl font-nunito mx-2">
+              <h3 className="text-white text-2xl font-nunito mx-2">
                 Trending Movies
               </h3>
               <div className="hidden sm:flex  justify-end gap-1 items-center">
@@ -511,7 +511,7 @@ export default function Home() {
             >
               {trendingMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <div className="w-20 mx-1 sm:w-40 border border-gray-500 rounded-lg sm:mx-2 my-3">
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
                     <img
                       src={baseUrl + movie.poster_path}
                       alt=""
@@ -528,7 +528,7 @@ export default function Home() {
               <h3 className="text-sm text-white sm:text-white sm:text-2xl font-nunito mx-2">
                 Trending Shows
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="hidden sm:flex  justify-end gap-1 items-center">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -568,7 +568,7 @@ export default function Home() {
               <h3 className="text-white text-2xl font-nunito mx-2">
                 Trending on Google
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="hidden sm:flex  justify-end gap-1 items-center">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -607,7 +607,7 @@ export default function Home() {
               <h3 className="text-white text-2xl font-nunito mx-2">
                 Top Rated Movies
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="hidden sm:flex  justify-end gap-1 items-center">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -648,7 +648,7 @@ export default function Home() {
               <h3 className="text-white text-2xl font-nunito mx-2">
                 Top Rated Tv Shows
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="hidden sm:flex  justify-end gap-1 items-center">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -688,7 +688,7 @@ export default function Home() {
               <h3 className="text-white text-2xl font-nunito mx-2">
                 Full on Action Movies
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="hidden sm:flex  justify-end gap-1 items-center">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -728,7 +728,7 @@ export default function Home() {
               <h3 className="text-white text-2xl font-nunito mx-2">
                 Adventure Movies
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="hidden sm:flex  justify-end gap-1 items-center">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -768,7 +768,7 @@ export default function Home() {
               <h3 className="text-white text-2xl font-nunito mx-2">
                 Animated Movies
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="hidden sm:flex  justify-end gap-1 items-center">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -808,7 +808,7 @@ export default function Home() {
               <h3 className="text-white text-2xl font-nunito mx-2">
                 Only Laughs
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="hidden sm:flex  justify-end gap-1 items-center">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -848,7 +848,7 @@ export default function Home() {
               <h3 className="text-white text-2xl font-nunito mx-2">
                 Criminal with style
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="hidden sm:flex  justify-end gap-1 items-center">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -888,7 +888,7 @@ export default function Home() {
               <h3 className="text-white text-2xl font-nunito mx-2">
                 Documentaries
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="hidden sm:flex  justify-end gap-1 items-center">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -928,7 +928,7 @@ export default function Home() {
               <h3 className="text-white text-2xl font-nunito mx-2">
                 Drama Movies
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="hidden sm:flex  justify-end gap-1 items-center">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -968,7 +968,7 @@ export default function Home() {
               <h3 className="text-white text-2xl font-nunito mx-2">
                 You Can Watch With Your Family
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="hidden sm:flex  justify-end gap-1 items-center">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -1008,7 +1008,7 @@ export default function Home() {
               <h3 className="text-white text-2xl font-nunito mx-2">
                 Yo! Fantasies Here
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="hidden sm:flex  justify-end gap-1 items-center">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -1048,7 +1048,7 @@ export default function Home() {
               <h3 className="text-white text-2xl font-nunito mx-2">
                 Watch Little History Here
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="hidden sm:flex  justify-end gap-1 items-center">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -1088,7 +1088,7 @@ export default function Home() {
               <h3 className="text-white text-2xl font-nunito mx-2">
                 Are you scared?
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="hidden sm:flex  justify-end gap-1 items-center">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -1128,7 +1128,7 @@ export default function Home() {
               <h3 className="text-white text-2xl font-nunito mx-2">
                 Musicals for Life
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="hidden sm:flex  justify-end gap-1 items-center">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -1168,7 +1168,7 @@ export default function Home() {
               <h3 className="text-white text-2xl font-nunito mx-2">
                 Ooh What A Mystery!
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="hidden sm:flex  justify-end gap-1 items-center">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -1208,7 +1208,7 @@ export default function Home() {
               <h3 className="text-white text-2xl font-nunito mx-2">
                 Aww Love these Romance Movies
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="hidden sm:flex  justify-end gap-1 items-center">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -1248,7 +1248,7 @@ export default function Home() {
               <h3 className="text-white text-2xl font-nunito mx-2">
                 Binge Worthy SciFi Movies
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="hidden sm:flex  justify-end gap-1 items-center">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -1288,7 +1288,7 @@ export default function Home() {
               <h3 className="text-white text-2xl font-nunito mx-2">
                 Yay Thrillers!
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="hidden sm:flex  justify-end gap-1 items-center">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -1328,7 +1328,7 @@ export default function Home() {
               <h3 className="text-white text-2xl font-nunito mx-2">
                 War Movies
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="hidden sm:flex  justify-end gap-1 items-center">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -1368,7 +1368,7 @@ export default function Home() {
               <h3 className="text-white text-2xl font-nunito mx-2">
                 Western Movies
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="hidden sm:flex  justify-end gap-1 items-center">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -1408,7 +1408,7 @@ export default function Home() {
               <h3 className="text-white text-2xl font-nunito mx-2">
                 Popular Tv Shows
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="hidden sm:flex  justify-end gap-1 items-center">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
