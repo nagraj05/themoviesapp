@@ -485,10 +485,10 @@ export default function Home() {
           {/*Trending Movies*/}
           <div className="p-6">
             <div className="flex items-center justify-between">
-              <h3 className="text-white text-2xl font-nunito mx-2">
+              <h3 className="text-sm text-white sm:text-white sm:text-2xl font-nunito mx-2">
                 Trending Movies
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="hidden sm:flex  justify-end gap-1 items-center">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -511,7 +511,7 @@ export default function Home() {
             >
               {trendingMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                  <div className="w-20 mx-1 sm:w-40 border border-gray-500 rounded-lg sm:mx-2 my-3">
                     <img
                       src={baseUrl + movie.poster_path}
                       alt=""
@@ -525,7 +525,7 @@ export default function Home() {
           {/*Trending Tv*/}
           <div className="p-6">
             <div className="flex items-center justify-between">
-              <h3 className="text-white text-2xl font-nunito mx-2">
+              <h3 className="text-sm text-white sm:text-white sm:text-2xl font-nunito mx-2">
                 Trending Shows
               </h3>
               <div className="flex  justify-end gap-1 items-center">
