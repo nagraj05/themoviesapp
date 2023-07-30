@@ -50,7 +50,7 @@ export default function Navbar() {
   return (
     <div className="flex justify-between items-center bg-nav py-5 font-rob font-semibold">
       <div>
-        <img src={logo} alt="Logo" className="h-12 mx-20 sm:h-8 sm:mx-10" />
+        <img src={logo} alt="Logo" className="h-12 mx-20" />
       </div>
       <div className="relative">
         <button
