@@ -485,10 +485,10 @@ export default function Home() {
           {/*Trending Movies*/}
           <div className="p-6">
             <div className="flex items-center justify-between">
-              <h3 className="text-white text-2xl font-nunito mx-2">
+              <h3 className="text-white text-2xl font-nunito mx-2 sm:text-sm">
                 Trending Movies
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="flex  justify-end gap-1 items-center sm:hidden">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -511,7 +511,7 @@ export default function Home() {
             >
               {trendingMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3 sm:w-20 sm:mx-1">
                     <img
                       src={baseUrl + movie.poster_path}
                       alt=""
@@ -525,10 +525,10 @@ export default function Home() {
           {/*Trending Tv*/}
           <div className="p-6">
             <div className="flex items-center justify-between">
-              <h3 className="text-white text-2xl font-nunito mx-2">
+              <h3 className="text-white text-2xl font-nunito mx-2 sm:text-sm">
                 Trending Shows
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="flex  justify-end gap-1 items-center sm:hidden">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -551,7 +551,7 @@ export default function Home() {
             >
               {trendingTv.map((movie) => (
                 <Link key={movie.id} to={`/tv/${movie.id}`}>
-                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3 sm:w-20 sm:mx-1">
                     <img
                       src={baseUrl + movie.poster_path}
                       alt=""
@@ -565,10 +565,10 @@ export default function Home() {
           {/*Trending People*/}
           <div className="p-6">
             <div className="flex items-center justify-between">
-              <h3 className="text-white text-2xl font-nunito mx-2">
+              <h3 className="text-white text-2xl font-nunito mx-2 sm:text-sm">
                 Trending on Google
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="flex  justify-end gap-1 items-center sm:hidden">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -587,13 +587,13 @@ export default function Home() {
             >
               {trendingPeople.map((movie) => (
                 <Link key={movie.id} to={`/people/${movie.id}`}>
-                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3 sm:w-20 sm:mx-1">
                     <img
                       src={baseUrl + movie.profile_path}
                       alt=""
                       className="h-54 w-40 rounded-t-lg"
                     />
-                    <h4 className="text-white font-ptsans  m-2">
+                    <h4 className="text-white font-ptsans  m-2 sm:text-sm">
                       {movie.name}
                     </h4>
                   </div>
@@ -604,10 +604,10 @@ export default function Home() {
           {/* Top Rated Movies */}
           <div className="flex flex-col p-4 ">
             <div className="flex items-center justify-between">
-              <h3 className="text-white text-2xl font-nunito mx-2">
+              <h3 className="text-white text-2xl font-nunito mx-2 sm:text-sm">
                 Top Rated Movies
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="flex  justify-end gap-1 items-center sm:hidden">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -631,7 +631,7 @@ export default function Home() {
               {topRatedMovies &&
                 topRatedMovies.map((movie) => (
                   <Link key={movie.id} to={`/movie/${movie.id}`}>
-                    <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                    <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3 sm:w-20 sm:mx-1">
                       <img
                         src={baseUrl + movie.poster_path}
                         alt=""
@@ -645,10 +645,10 @@ export default function Home() {
           {/*Top Rated Tv Shows*/}
           <div className="flex flex-col p-4 ">
             <div className="flex items-center justify-between">
-              <h3 className="text-white text-2xl font-nunito mx-2">
+              <h3 className="text-white text-2xl font-nunito mx-2 sm:text-sm">
                 Top Rated Tv Shows
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="flex  justify-end gap-1 items-center sm:hidden">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -671,7 +671,7 @@ export default function Home() {
             >
               {topRatedTv.map((movie) => (
                 <Link key={movie.id} to={`/tv/${movie.id}`}>
-                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3 sm:w-20 sm:mx-1">
                     <img
                       src={baseUrl + movie.poster_path}
                       alt=""
@@ -685,10 +685,10 @@ export default function Home() {
           {/* Action Movies */}
           <div className="flex flex-col p-4 ">
             <div className="flex items-center justify-between">
-              <h3 className="text-white text-2xl font-nunito mx-2">
+              <h3 className="text-white text-2xl font-nunito mx-2 sm:text-sm">
                 Full on Action Movies
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="flex  justify-end gap-1 items-center sm:hidden">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -711,7 +711,7 @@ export default function Home() {
             >
               {actionMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3 sm:w-20 sm:mx-1">
                     <img
                       src={baseUrl + movie.poster_path}
                       alt=""
@@ -725,10 +725,10 @@ export default function Home() {
           {/* Adventure Movies */}
           <div className="flex flex-col p-4 ">
             <div className="flex items-center justify-between">
-              <h3 className="text-white text-2xl font-nunito mx-2">
+              <h3 className="text-white text-2xl font-nunito mx-2 sm:text-sm">
                 Adventure Movies
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="flex  justify-end gap-1 items-center sm:hidden">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -751,7 +751,7 @@ export default function Home() {
             >
               {adventureMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3 sm:w-20 sm:mx-1">
                     <img
                       src={baseUrl + movie.poster_path}
                       alt=""
@@ -765,10 +765,10 @@ export default function Home() {
           {/* Animated Movies */}
           <div className="flex flex-col p-4 ">
             <div className="flex items-center justify-between">
-              <h3 className="text-white text-2xl font-nunito mx-2">
+              <h3 className="text-white text-2xl font-nunito mx-2 sm:text-sm">
                 Animated Movies
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="flex  justify-end gap-1 items-center sm:hidden">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -791,7 +791,7 @@ export default function Home() {
             >
               {animatedMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3 sm:w-20 sm:mx-1">
                     <img
                       src={baseUrl + movie.poster_path}
                       alt=""
@@ -805,10 +805,10 @@ export default function Home() {
           {/* Comedy Movies */}
           <div className="flex flex-col p-4 ">
             <div className="flex items-center justify-between">
-              <h3 className="text-white text-2xl font-nunito mx-2">
+              <h3 className="text-white text-2xl font-nunito mx-2 sm:text-sm">
                 Only Laughs
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="flex  justify-end gap-1 items-center sm:hidden">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -831,7 +831,7 @@ export default function Home() {
             >
               {comedyMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3 sm:w-20 sm:mx-1">
                     <img
                       src={baseUrl + movie.poster_path}
                       alt=""
@@ -845,10 +845,10 @@ export default function Home() {
           {/* Crime Movies */}
           <div className="flex flex-col p-4 ">
             <div className="flex items-center justify-between">
-              <h3 className="text-white text-2xl font-nunito mx-2">
+              <h3 className="text-white text-2xl font-nunito mx-2 sm:text-sm">
                 Criminal with style
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="flex  justify-end gap-1 items-center sm:hidden">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -871,7 +871,7 @@ export default function Home() {
             >
               {crimeMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3 sm:w-20 sm:mx-1">
                     <img
                       src={baseUrl + movie.poster_path}
                       alt=""
@@ -885,10 +885,10 @@ export default function Home() {
           {/* Documentary Movies */}
           <div className="flex flex-col p-4 ">
             <div className="flex items-center justify-between">
-              <h3 className="text-white text-2xl font-nunito mx-2">
+              <h3 className="text-white text-2xl font-nunito mx-2 sm:text-sm">
                 Documentaries
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="flex  justify-end gap-1 items-center sm:hidden">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -911,7 +911,7 @@ export default function Home() {
             >
               {documentaryMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3 sm:w-20 sm:mx-1">
                     <img
                       src={baseUrl + movie.poster_path}
                       alt=""
@@ -925,10 +925,10 @@ export default function Home() {
           {/* Drama Movies */}
           <div className="flex flex-col p-4 ">
             <div className="flex items-center justify-between">
-              <h3 className="text-white text-2xl font-nunito mx-2">
+              <h3 className="text-white text-2xl font-nunito mx-2 sm:text-sm">
                 Drama Movies
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="flex  justify-end gap-1 items-center sm:hidden">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -951,7 +951,7 @@ export default function Home() {
             >
               {dramaMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3 sm:w-20 sm:mx-1">
                     <img
                       src={baseUrl + movie.poster_path}
                       alt=""
@@ -965,10 +965,10 @@ export default function Home() {
           {/* Family Movies */}
           <div className="flex flex-col p-4 ">
             <div className="flex items-center justify-between">
-              <h3 className="text-white text-2xl font-nunito mx-2">
+              <h3 className="text-white text-2xl font-nunito mx-2 sm:text-sm">
                 You Can Watch With Your Family
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="flex  justify-end gap-1 items-center sm:hidden">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -991,7 +991,7 @@ export default function Home() {
             >
               {familyMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3 sm:w-20 sm:mx-1">
                     <img
                       src={baseUrl + movie.poster_path}
                       alt=""
@@ -1005,10 +1005,10 @@ export default function Home() {
           {/* Fantasy Movies */}
           <div className="flex flex-col p-4 ">
             <div className="flex items-center justify-between">
-              <h3 className="text-white text-2xl font-nunito mx-2">
+              <h3 className="text-white text-2xl font-nunito mx-2 sm:text-sm">
                 Yo! Fantasies Here
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="flex  justify-end gap-1 items-center sm:hidden">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -1031,7 +1031,7 @@ export default function Home() {
             >
               {fantasyMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3 sm:w-20 sm:mx-1">
                     <img
                       src={baseUrl + movie.poster_path}
                       alt=""
@@ -1045,10 +1045,10 @@ export default function Home() {
           {/* History Movies */}
           <div className="flex flex-col p-4 ">
             <div className="flex items-center justify-between">
-              <h3 className="text-white text-2xl font-nunito mx-2">
+              <h3 className="text-white text-2xl font-nunito mx-2 sm:text-sm">
                 Watch Little History Here
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="flex  justify-end gap-1 items-center sm:hidden">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -1071,7 +1071,7 @@ export default function Home() {
             >
               {historyMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3 sm:w-20 sm:mx-1">
                     <img
                       src={baseUrl + movie.poster_path}
                       alt=""
@@ -1085,10 +1085,10 @@ export default function Home() {
           {/* Horror Movies */}
           <div className="flex flex-col p-4 ">
             <div className="flex items-center justify-between">
-              <h3 className="text-white text-2xl font-nunito mx-2">
+              <h3 className="text-white text-2xl font-nunito mx-2 sm:text-sm">
                 Are you scared?
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="flex  justify-end gap-1 items-center sm:hidden">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -1111,7 +1111,7 @@ export default function Home() {
             >
               {horrorMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3 sm:w-20 sm:mx-1">
                     <img
                       src={baseUrl + movie.poster_path}
                       alt=""
@@ -1125,10 +1125,10 @@ export default function Home() {
           {/* Music Movies */}
           <div className="flex flex-col p-4 ">
             <div className="flex items-center justify-between">
-              <h3 className="text-white text-2xl font-nunito mx-2">
+              <h3 className="text-white text-2xl font-nunito mx-2 sm:text-sm">
                 Musicals for Life
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="flex  justify-end gap-1 items-center sm:hidden">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -1151,7 +1151,7 @@ export default function Home() {
             >
               {musicMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3 sm:w-20 sm:mx-1">
                     <img
                       src={baseUrl + movie.poster_path}
                       alt=""
@@ -1165,10 +1165,10 @@ export default function Home() {
           {/* Mystery Movies */}
           <div className="flex flex-col p-4 ">
             <div className="flex items-center justify-between">
-              <h3 className="text-white text-2xl font-nunito mx-2">
+              <h3 className="text-white text-2xl font-nunito mx-2 sm:text-sm">
                 Ooh What A Mystery!
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="flex  justify-end gap-1 items-center sm:hidden">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -1191,7 +1191,7 @@ export default function Home() {
             >
               {mysteryMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3 sm:w-20 sm:mx-1">
                     <img
                       src={baseUrl + movie.poster_path}
                       alt=""
@@ -1205,10 +1205,10 @@ export default function Home() {
           {/* Romance Movies */}
           <div className="flex flex-col p-4 ">
             <div className="flex items-center justify-between">
-              <h3 className="text-white text-2xl font-nunito mx-2">
+              <h3 className="text-white text-2xl font-nunito mx-2 sm:text-sm">
                 Aww Love these Romance Movies
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="flex  justify-end gap-1 items-center sm:hidden">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -1231,7 +1231,7 @@ export default function Home() {
             >
               {romanceMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3 sm:w-20 sm:mx-1">
                     <img
                       src={baseUrl + movie.poster_path}
                       alt=""
@@ -1245,10 +1245,10 @@ export default function Home() {
           {/* Scifi Movies */}
           <div className="flex flex-col p-4 ">
             <div className="flex items-center justify-between">
-              <h3 className="text-white text-2xl font-nunito mx-2">
+              <h3 className="text-white text-2xl font-nunito mx-2 sm:text-sm">
                 Binge Worthy SciFi Movies
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="flex  justify-end gap-1 items-center sm:hidden">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -1271,7 +1271,7 @@ export default function Home() {
             >
               {scifiMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3 sm:w-20 sm:mx-1">
                     <img
                       src={baseUrl + movie.poster_path}
                       alt=""
@@ -1285,10 +1285,10 @@ export default function Home() {
           {/* Thriller Movies */}
           <div className="flex flex-col p-4 ">
             <div className="flex items-center justify-between">
-              <h3 className="text-white text-2xl font-nunito mx-2">
+              <h3 className="text-white text-2xl font-nunito mx-2 sm:text-sm">
                 Yay Thrillers!
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="flex  justify-end gap-1 items-center sm:hidden">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -1311,7 +1311,7 @@ export default function Home() {
             >
               {thrillerMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3 sm:w-20 sm:mx-1">
                     <img
                       src={baseUrl + movie.poster_path}
                       alt=""
@@ -1325,10 +1325,10 @@ export default function Home() {
           {/* War Movies */}
           <div className="flex flex-col p-4 ">
             <div className="flex items-center justify-between">
-              <h3 className="text-white text-2xl font-nunito mx-2">
+              <h3 className="text-white text-2xl font-nunito mx-2 sm:text-sm">
                 War Movies
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="flex  justify-end gap-1 items-center sm:hidden">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -1351,7 +1351,7 @@ export default function Home() {
             >
               {warMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3 sm:w-20 sm:mx-1">
                     <img
                       src={baseUrl + movie.poster_path}
                       alt=""
@@ -1365,10 +1365,10 @@ export default function Home() {
           {/* Western Movies */}
           <div className="flex flex-col p-4 ">
             <div className="flex items-center justify-between">
-              <h3 className="text-white text-2xl font-nunito mx-2">
+              <h3 className="text-white text-2xl font-nunito mx-2 sm:text-sm">
                 Western Movies
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="flex  justify-end gap-1 items-center sm:hidden">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -1391,7 +1391,7 @@ export default function Home() {
             >
               {westernMovies.map((movie) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3 sm:w-20 sm:mx-1">
                     <img
                       src={baseUrl + movie.poster_path}
                       alt=""
@@ -1405,10 +1405,10 @@ export default function Home() {
           {/*Popular Tv Shows */}
           <div className="flex flex-col p-4 ">
             <div className="flex items-center justify-between">
-              <h3 className="text-white text-2xl font-nunito mx-2">
+              <h3 className="text-white text-2xl font-nunito mx-2 sm:text-sm">
                 Popular Tv Shows
               </h3>
-              <div className="flex  justify-end gap-1 items-center">
+              <div className="flex  justify-end gap-1 items-center sm:hidden">
                 <ArrowForwardIosIcon
                   className="text-white cursor-pointer  bg-nav p-2"
                   style={{ fontSize: "32px", transform: "rotate(180deg)" }}
@@ -1431,7 +1431,7 @@ export default function Home() {
             >
               {popularShows.map((movie) => (
                 <Link key={movie.id} to={`/tv/${movie.id}`}>
-                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3">
+                  <div className="w-40 border border-gray-500 rounded-lg mx-2 my-3 sm:w-20 sm:mx-1">
                     <img
                       src={baseUrl + movie.poster_path}
                       alt=""
