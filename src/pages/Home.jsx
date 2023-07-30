@@ -525,7 +525,7 @@ export default function Home() {
           {/*Trending Tv*/}
           <div className="p-6">
             <div className="flex items-center justify-between">
-              <h3 className="text-sm text-white sm:text-white sm:text-2xl font-nunito mx-2">
+              <h3 className="text-white text-2xl font-nunito mx-2">
                 Trending Shows
               </h3>
               <div className="hidden sm:flex  justify-end gap-1 items-center">
