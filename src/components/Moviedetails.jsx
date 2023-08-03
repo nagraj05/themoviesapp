@@ -161,7 +161,7 @@ export default function Moviedetails() {
                 </p>
               </div>
             </div>
-            {details.genres > 0 && (
+            {details.genres && (
               <p className="text-white bg-nav p-3 font-nunito rounded-xl my-1">
                 Genre:{details.genres.map((genre) => genre.name).join(", ")}
               </p>
