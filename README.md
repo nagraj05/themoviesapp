@@ -1,5 +1,5 @@
-## The Cinema
-The Cinema is a movies website built using Vite, React, and Tailwind CSS. It utilizes the TMDB API to fetch movie data and provide a seamless movie browsing experience. This README.md file provides an overview of the project and instructions for running the website locally.
+## CINEWARS
+CINEWARS is a movies website built using Vite, React, and Tailwind CSS. It utilizes the TMDB API to fetch movie data and provide a seamless movie browsing experience. This README.md file provides an overview of the project and instructions for running the website locally.
 
 ## Features
 * Browse popular, top-rated, and upcoming movies
