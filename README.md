@@ -21,7 +21,7 @@ Follow the instructions below to get a local copy of the project up and running 
 ## Installation
 1. Clone the repository to your local machine:
 ```
-git clone https://github.com/your-username/the-cinema.git
+git clone https://github.com/your-username/themoviesapp.git
 ```
 2. Navigate to the project directory:
 
