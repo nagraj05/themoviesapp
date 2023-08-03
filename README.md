@@ -34,7 +34,7 @@ npm install
 ```
 or
 ```
-yarn
+yarn install
 ```
 ## Configuration
 To use the TMDB API, you need to obtain an API key. Follow these steps to get your API key:
@@ -83,4 +83,4 @@ The optimized and minified files will be generated in the dist directory.
 * [Tailwind CSS](https://tailwindcss.com/)
 * [TMDB API](https://www.themoviedb.org/)
 
-Enjoy exploring The Cinema! If you have any questions or feedback, please don't hesitate to contact me.
+Enjoy exploring  CINEWARS! If you have any questions or feedback, please don't hesitate to contact me.
