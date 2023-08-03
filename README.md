@@ -26,7 +26,7 @@ git clone https://github.com/your-username/themoviesapp.git
 2. Navigate to the project directory:
 
 ```
-cd the-cinema
+cd themoviesapp
 ```
 3. Install the dependencies using NPM or Yarn:
 ```
